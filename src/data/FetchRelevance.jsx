@@ -9,9 +9,9 @@ const FetchRelevance = () => {
       .then((res) => res.json())
       .then((json) => {
         setRelevanceGames(json);
-        console.log(relevanceGames);
       });
   }, []);
+  console.log(relevanceGames);
 };
 
 export default FetchRelevance;

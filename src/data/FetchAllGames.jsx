@@ -9,9 +9,9 @@ const FetchAllGames = () => {
       .then((res) => res.json())
       .then((json) => {
         setAllGames(json);
-        console.log(allGames);
       });
   }, []);
+  console.log(allGames);
 };
 
 export default FetchAllGames;
