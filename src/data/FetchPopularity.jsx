@@ -5,7 +5,7 @@ const FetchPopularity = () => {
   const { popularityGames, setPopularityGames } = useContext(PopularityContext);
 
   useEffect(() => {
-    fetch("GET https://www.freetogame.com/api/games")
+    fetch("https://www.freetogame.com/api/games")
       .then((res) => res.json())
       .then((json) => {
         setPopularityGames(json);
