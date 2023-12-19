@@ -1,0 +1,19 @@
+.buttonOutline {
+  margin-left: 2rem;
+  background-color: var(--card-background);
+  border: 2px solid var(--highlight);
+  color: white;
+  font-size: 1rem;
+  font-family: "Oswald";
+  font-weight: 700;
+  border-radius: 1.25rem;
+  padding: 0.625rem 1rem;
+}
+
+.buttonOutline:hover {
+  border: 2px solid var(--highlight);
+}
+
+.buttonOutline:active {
+  transform: scale(0.95);
+}

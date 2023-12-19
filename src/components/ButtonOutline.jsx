@@ -1,7 +1,8 @@
-const ButtonOutline = () => {
+import "./ButtonOutline.scss";
+const ButtonOutline = ({ name }) => {
   return (
     <>
-      <div></div>
+      <button className="buttonOutline"> {name} </button>
     </>
   );
 };
