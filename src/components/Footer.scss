@@ -1,0 +1,31 @@
+footer {
+  border-top: 1px solid rgba(175, 199, 223, 0.2);
+  padding: 2% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-family: "Titillium Web";
+  color: var(--text-description);
+  font-weight: 200;
+  font-size: 1rem;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    .githubLinks {
+      display: flex;
+      gap: 0.5rem;
+      a {
+        color: var(--text-description);
+        text-decoration: none;
+        font-weight: 200;
+      }
+    }
+  }
+  a {
+    color: var(--highlight);
+    font-weight: 400;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+}
