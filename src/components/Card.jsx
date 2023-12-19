@@ -1,3 +1,4 @@
+import ButtonFilled from "./ButtonFilled";
 import "./Card.scss";
 
 const Card = (props) => {
@@ -6,7 +7,7 @@ const Card = (props) => {
       <div className="Card__Design">
         <img src={props.thumbnail} alt="" />
         <h2>{props.title}</h2>
-        <button>READ MORE</button>
+        <ButtonFilled name="READ MORE" />
         <hr />
         <div className="Bottom_Btns">
           <button>LOGO</button>
