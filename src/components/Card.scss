@@ -1,0 +1,48 @@
+// FARBEN
+// --highlight: #ff4654;
+// --card-background: #102130;
+// --primary: #040f14;
+// --text-title: #ffffff;
+// --text-description: #afc7df;
+
+.Card__Design {
+  background-color: #102130;
+  display: inline-block;
+  margin: 12px 12px;
+  border-radius: 25px;
+  height: 480px;
+
+  img {
+    border-radius: 25px;
+    object-fit: cover;
+    width: 100%;
+  }
+  h2 {
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 12px;
+    margin-bottom: 24px;
+  }
+  button {
+    margin-left: 12px;
+    cursor: pointer;
+  }
+  hr {
+    width: 90%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+  .Bottom_Btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-top: auto;
+    padding-top: 32px;
+    button {
+      width: 50%;
+    }
+  }
+}
