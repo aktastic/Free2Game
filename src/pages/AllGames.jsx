@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import FilterBar from "../components/filterbar/FilterBar";
-import xicon from '../assets/img/xicon.png'
+import Vector from '../img/Vector.svg'
+import Group from '../img/Group.svg'
 import { AllGamesContext, PopularityContext } from "../context/FetchContext";
 import Card from "../components/Card";
 
@@ -12,6 +13,9 @@ const AllGames = () => {
   const [filterData, setFilterData] = useState([])
   const [mapData, setMapData] = useState([])
   const [loading, setLoading] = useState(false)
+  
+  
+  console.log(allGames.sort((a,b)=> a.title > b.title));
 
   useEffect(()=>{
     if(allGames.length <=0){
@@ -22,7 +26,13 @@ const AllGames = () => {
     
     if(selectedSort === 'popularity'){
       setMapData(popularityGames)
-    } 
+    }
+
+    if(selectedSort === 'alphabetical'){
+      const sortedAlph = [...mapData].sort((a,b)=>{if(a.title<b.title)return -1})
+      setMapData(sortedAlph)
+    }
+    
   },[loading, selectedSort])
   console.log(allGames);
   const handleFilter = (filterType, value) =>{
@@ -75,6 +85,9 @@ const AllGames = () => {
         key={index}
         thumbnail={game.thumbnail}
         title={game.title}
+        genre={game.genre}
+        platform={game.platform}
+        svg={game.platform==="PC (Windows)" ? Vector : Group }
         />)}
       </section>
     </>
