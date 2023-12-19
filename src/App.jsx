@@ -5,15 +5,14 @@ import {
   PopularityContext,
   RelevanceContext,
 } from "./context/FetchContext";
-
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import AllGames from "./pages/AllGames";
 import RecentlyAdded from "./pages/RecentlyAdded";
-import "./App.scss";
 import FetchAllGames from "./data/FetchAllGames";
 import FetchPopularity from "./data/FetchPopularity";
 import FetchRelevance from "./data/FetchRelevance";
+import "./App.scss";
 
 function App() {
   const [allGames, setAllGames] = useState([]);
@@ -29,7 +28,6 @@ function App() {
           <RelevanceContext.Provider
             value={{ relevanceGames, setRelevanceGames }}
           >
-            <h1>HALLOO</h1>
             <FetchAllGames />
             <FetchPopularity />
             <FetchRelevance />
