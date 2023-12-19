@@ -29,7 +29,7 @@ function App() {
           <RelevanceContext.Provider
             value={{ relevanceGames, setRelevanceGames }}
           >
-            <h1>HALLOO</h1>
+            {/* <h1>HALLOO</h1> */}
             <FetchAllGames />
             <FetchPopularity />
             <FetchRelevance />

@@ -1,0 +1,16 @@
+.buttonFilled {
+  background-color: var(--highlight);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-family: "Oswald";
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: white;
+  line-height: 1.625rem;
+}
+
+.buttonFilled:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 2px black;
+}
