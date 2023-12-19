@@ -7,15 +7,15 @@ const GenreSelect = (props) => {
     allGames?.map((game)=>{
         allGameGenre.push(game.genre)
     })
-    console.log(allGameGenre);
+    
     const genre = allGameGenre?.filter((value, index)=>{
         return allGameGenre.indexOf(value) === index
     })
-    console.log(genre);
+    
     return ( 
         <>
-        <select name="genre/tag" onChange={props.func}>
-            <option value="">GENRE/TAG</option>
+        <select name="genre/tag" value={''}onChange={props.func}>
+            <option value="" disabled hidden>GENRE/TAG</option>
             {genre?.map((tag, index)=>
                 <option value={tag} key={index}>{tag}</option>
             )}
