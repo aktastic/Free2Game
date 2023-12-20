@@ -37,8 +37,8 @@ function App() {
             <FetchPopularity />
             <FetchRelevance />
             <BrowserRouter>
-            {/* <Nav />
-            <Menu />     */}
+            <Nav />
+            <Menu />    
 
               <Routes>
                 <Route path="/" element={<Home />} />
