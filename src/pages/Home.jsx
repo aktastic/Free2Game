@@ -10,6 +10,7 @@ import "./Home.scss";
 import { useContext, useState } from "react";
 import CardHorizontal from "../components/CardHorizontal";
 import HeaderBanner from "../components/HeaderBanner";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
@@ -59,7 +60,9 @@ const Home = () => {
               />
               <div className="over_image">
                 <h2>{popularGamesInPC[0]?.title}</h2>
-                <ButtonFilled name="READ MORE" />
+                <Link to={`/details/${popularGamesInPC[0]?.id}`}>
+                  <ButtonFilled name="READ MORE" />
+                </Link>
                 <div className="outline_buttons">
                   <ButtonOutline
                     name={
