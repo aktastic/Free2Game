@@ -1,3 +1,8 @@
+
+
+
+const Home = () => {
+
 import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import Footer from "../components/Footer";
@@ -24,6 +29,7 @@ const Home = (props) => {
   const popularGamesInPC = popularityGames.filter((game) =>
     game.platform.toLowerCase().includes("pc")
   );
+
 
   return (
     <section className="HomePage">

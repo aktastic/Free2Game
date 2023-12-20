@@ -12,7 +12,12 @@ import RecentlyAdded from "./pages/RecentlyAdded";
 import FetchAllGames from "./data/FetchAllGames";
 import FetchPopularity from "./data/FetchPopularity";
 import FetchRelevance from "./data/FetchRelevance";
+
+import Nav from "./components/Nav";
+import Menu from "./components/Menu";
+
 import "./App.scss";
+
 
 function App() {
   const [allGames, setAllGames] = useState([]);
@@ -32,6 +37,9 @@ function App() {
             <FetchPopularity />
             <FetchRelevance />
             <BrowserRouter>
+            <Nav />
+            <Menu />    
+
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/details/:id" element={<Details />} />
