@@ -1,8 +1,8 @@
 import "./ButtonOutline.scss";
-const ButtonOutline = ({ name }) => {
+const ButtonOutline = ({ name,filterfunc }) => {
   return (
     <>
-      <button className="buttonOutline"> {name} </button>
+      <button className="buttonOutline" onClick={filterfunc}>{name}</button>
     </>
   );
 };

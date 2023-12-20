@@ -40,6 +40,7 @@ const Home = () => {
             {recentlyAddedGames?.map((game, index) => (
               <Card
                 key={index}
+                id={game.id}
                 thumbnail={game.thumbnail}
                 title={game.title}
                 genre={game.genre}
@@ -83,6 +84,7 @@ const Home = () => {
               {top2_4InPc?.map((game, index) => (
                 <CardHorizontal
                   key={index}
+                  id={game.id}
                   thumbnail={game.thumbnail}
                   title={game.title}
                   genre={game.genre}
@@ -100,6 +102,7 @@ const Home = () => {
             {top4InBrowser?.map((game, index) => (
               <Card
                 key={index}
+                id={game.id}
                 thumbnail={game.thumbnail}
                 title={game.title}
                 genre={game.genre}
