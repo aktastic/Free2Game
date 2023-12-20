@@ -13,62 +13,42 @@ const AllGames = () => {
     filter2: null,
   });
   const [selectedSort, setSelectedSort] = useState(null);
-  const [filterData, setFilterData] = useState([]);
-  const [mapData, setMapData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (allGames.length <= 0) {
-      setLoading(!loading);
-    } else {
-      setMapData(allGames);
-    }
+  
+  const [mapData, setMapData] = useState(allGames)
+  
+  
+  
+  
 
-    if (selectedFilters.filter1 !== null && selectedFilters.filter2 !== null) {
-      const filteredBoth = allGames.filter((game) => {
-        return (
-          game.platform === selectedFilters.filter1 &&
-          game.genre === selectedFilters.filter2
-        );
-      });
+  useEffect(()=>{
+    
 
-      setMapData(filteredBoth);
-    }
-    if (selectedFilters.filter1 !== null && selectedFilters.filter2 === null) {
-      const filteredFirst = allGames.filter((game) => {
-        return game.platform === selectedFilters.filter1;
-      });
+      const filterAndSort = ()=>{
+        let filteredData = [...allGames];
 
-      setMapData(filteredFirst);
-    }
-    if (selectedFilters.filter1 === null && selectedFilters.filter2 !== null) {
-      const filteredSecond = allGames.filter((game) => {
-        return game.genre === selectedFilters.filter2;
-      });
-      setMapData(filteredSecond);
-    }
+        if (selectedFilters.filter1) {
+          filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
+        } if(selectedFilters.filter1 === 'Web Browser'){
+          filteredData = filteredData.filter((game) => game.platform.includes(selectedFilters.filter1) )
+        }
 
-    if (selectedSort === "popularity") {
-      setMapData(popularityGames);
-    } else if (selectedSort === "alphabetical") {
-      const sortedAlph = [...mapData].sort((a, b) => {
-        if (a.title < b.title) return -1;
-      });
-      setMapData(sortedAlph);
-    } else if (selectedSort === "Release(desc)") {
-      const sortedDesc = [...mapData].sort(
-        (a, b) => new Date(b.release_date) - new Date(a.release_date)
-      );
-      console.log(sortedDesc);
-      setMapData(sortedDesc);
-    } else if (selectedSort === "Release(asc)") {
-      const sortedAsc = [...mapData].sort(
-        (a, b) => new Date(a.release_date) - new Date(b.release_date)
-      );
-      console.log(sortedAsc);
-      setMapData(sortedAsc);
-    } else console.log("ERRORRRR");
-  }, [loading, selectedSort, selectedFilters]);
+        if (selectedFilters.filter2) {
+          filteredData = filteredData.filter((game) => game.genre === selectedFilters.filter2);
+        }
+        if (selectedSort === 'popularity') {
+          filteredData = popularityGames;
+        } else if (selectedSort === 'alphabetical') {
+          filteredData = filteredData.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (selectedSort === 'Release(desc)') {
+          filteredData = filteredData.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+        } else if (selectedSort === 'Release(asc)') {
+          filteredData = filteredData.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+        }
+        setMapData(filteredData);
+      }
+      filterAndSort()
+  },[ selectedSort , popularityGames, selectedFilters, allGames])
 
   console.log(allGames);
   const handleFilter = (filterType, value) => {
@@ -131,16 +111,21 @@ const AllGames = () => {
         </ul>
       </div>
       <section>
-        {mapData?.map((game, index) => (
-          <Card
-            key={index}
-            thumbnail={game.thumbnail}
-            title={game.title}
-            genre={game.genre}
-            platform={game.platform}
-            svg={game.platform === "PC (Windows)" ? Vector : Group}
-          />
-        ))}
+
+        {mapData?.map((game, index)=><Card
+        key={index}
+        id={game.id}
+        thumbnail={game.thumbnail}
+        title={game.title}
+        genre={game.genre}
+        platform={game.platform}
+        svg={game.platform==="PC (Windows)" ? Vector : Group }
+        filterfunc2={(e)=>{handleFilter('filter2',e.target.textContent)}}
+        filterfunc1={()=>{handleFilter('filter1',`${game.platform}`)}}
+        filterfunc3={()=>{handleFilter('filter1',"PC (Windows)")}}
+        filterfunc4={()=>{handleFilter('filter1',"Web Browser")}}
+        />)}
+
       </section>
     </>
   );
