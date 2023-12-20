@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    // Background-Color:
+    --primary: #040f14;
+    // Searchbar, Dropdown-Points:
+    --primary-medium: #375470;
+
+    --text-description: #afc7df;
+
+    --highlight: #ff4654;
+
+    --text-title: #ffffff;
+
+    // Card:
+    // =====
+    --card-background: #102130;
+    // Horizontal Line:
+    --card-hr-dark: #ffffff33;
+}
+
+html {
+    background-color: var(--primary);
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

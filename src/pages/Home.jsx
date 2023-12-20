@@ -1,3 +1,6 @@
+import Menu from "../components/Menu";
+import Nav from "../components/Nav";
+
 const Home = () => {
   return (
     <>

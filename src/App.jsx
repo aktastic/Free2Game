@@ -14,6 +14,8 @@ import "./App.scss";
 import FetchAllGames from "./data/FetchAllGames";
 import FetchPopularity from "./data/FetchPopularity";
 import FetchRelevance from "./data/FetchRelevance";
+import Nav from "./components/Nav";
+import Menu from "./components/Menu";
 
 function App() {
   const [allGames, setAllGames] = useState([]);
@@ -29,11 +31,15 @@ function App() {
           <RelevanceContext.Provider
             value={{ relevanceGames, setRelevanceGames }}
           >
-            <h1>HALLOO</h1>
             <FetchAllGames />
             <FetchPopularity />
             <FetchRelevance />
             <BrowserRouter>
+            <Nav />
+            {/* <Menu /> */}
+            <Menu />
+      
+
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/details/:id" element={<Details />} />
