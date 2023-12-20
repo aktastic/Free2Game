@@ -1,0 +1,128 @@
+.sidebar {
+    // background-color: var(--primary);
+    background-color: transparent;
+    height: 100vh;
+    width: 80px;
+    border-right: 2px solid white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.4s ease;
+
+    // Icons: Hamburger + Close
+    div {
+        .hamburger-menu {
+            cursor: pointer;
+        }
+
+        .close-icon-unvisible {
+            visibility: hidden;
+            color: white;
+            font-size: 2.5rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    }
+
+    // Menu (Home, All Games, Recently Added)
+    nav {
+        margin-block: 30vh;
+        padding: 8px 12px;
+
+        ul {
+            li {
+                margin: 24px 0;
+                list-style-type: none;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    img {
+                    }
+                    // Icon-Titel (Home, All Games, Recently added)
+                    .nav-item-unvisible {
+                        display: none;
+                    }
+                }
+
+                .active {
+                    background-color: var(--highlight);
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+}
+
+// Bei Klick auf Hamburger-Icon wird diese Klasse eingefügt
+// Sidebar klappt nach rechts aus/wird breiter
+.sidebar_open {
+    width: 260px;
+
+    // Hamburger-Icon verschwindet
+    .hamburger-menu {
+        visibility: hidden;
+    }
+
+    .nav-item-visible {
+        padding-block: 10px;
+        color: white;
+        font-size: 1.5rem;
+    }
+}
+
+// X - Close-Icon erscheint
+.close-icon-visible {
+    visibility: visible;
+    color: white;
+    font-size: 2.5rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+// active
+.sidebar_open + .main-content {
+    background-color: gold;
+    // funktioniert nicht
+    left: 260px;
+    width: calc(100% - 260px);
+}
+
+// to do:
+// Beim Schließen der Sidebar ist die Transition nicht drin - Bewegung zu hart!
+.main-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    left: 120px;
+    top: 24px;
+}
+
+.main-content-side {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    left: 320px;
+    top: 24px;
+    transition: all 0.4s ease;
+}
+
+.main-content-close {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    left: 120px;
+    top: 24px;
+    transition: all 0.4s ease;
+}
