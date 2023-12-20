@@ -25,13 +25,7 @@ const Footer = () => {
           </div>
         </div>
         <a href="#top" className={backToTopVisiable ? "backToTop" : "hidden"}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="93.9119"
-            height="93.9119"
-            viewBox="0 0 93.9119 93.9119"
-          >
+          <svg width="93.9119" height="93.9119" viewBox="0 0 93.9119 93.9119">
             <path d="M2,46.956c0,-24.8285 20.1275,-44.956 44.956,-44.956c24.8285,0 44.956,20.1275 44.956,44.956c0,24.8285 -20.1275,44.956 -44.956,44.956c-24.8285,0 -44.956,-20.1275 -44.956,-44.956z" />
             <path
               d="M27.3186,39.5934l19.6374,-19.6374l19.6374,19.6374"

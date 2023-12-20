@@ -1,16 +1,16 @@
 .buttonOutline {
-  margin-left: 2rem;
   background-color: var(--card-background);
   border: 2px solid var(--highlight);
   color: white;
   font-size: 1rem;
   font-family: "Oswald";
-  font-weight: 700;
+  font-weight: 500;
   border-radius: 1.25rem;
   padding: 0.625rem 1rem;
 
-  svg {
-    fill: var(--text-title);
+  & > img {
+    width: 1rem;
+    // height: 1rem;
   }
 }
 

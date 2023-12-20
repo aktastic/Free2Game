@@ -1,18 +1,17 @@
 import ButtonFilled from "./ButtonFilled";
 import ButtonOutline from "./ButtonOutline";
-import "./Card.scss";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
+import "./CardHorizontal.scss";
 
-const Card = (props) => {
+const CardHorizontal = (props) => {
   return (
     <>
-      <div className="Card__Design">
+      <div className="horizontal_card">
         <img src={props.thumbnail} alt="" />
-        <article>
+        <div>
           <h2>{props.title}</h2>
           <ButtonFilled name="READ MORE" />
-          {/* <hr /> */}
           {props.platform === "PC (Windows), Web Browser" ? (
             <div className="Bottom_Btns">
               <ButtonOutline name={<img src={Vector} alt="Windows Logo" />} />
@@ -25,10 +24,10 @@ const Card = (props) => {
               <ButtonOutline name={props.genre} />
             </div>
           )}
-        </article>
+        </div>
       </div>
     </>
   );
 };
 
-export default Card;
+export default CardHorizontal;
