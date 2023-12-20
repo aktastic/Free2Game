@@ -5,8 +5,10 @@ import addIcon from "../img/Recently-Added.svg";
 import logoIcon from "../img/logo.svg";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import moon from "../img/moon.png";
+import sun from "../img/sun.png";
 
-const MenuNew = () => {
+const MenuNew = (props) => {
   // btn
   const [hamburgerNotClicked, setHamburgerNotClicked] = useState(true);
 
@@ -118,6 +120,13 @@ const MenuNew = () => {
             </li>
           </ul>
         </nav>
+
+        <img
+          className="mode"
+          onClick={props.onClick}
+          src={props.darkMode ? sun : moon}
+          alt="sun"
+        />
       </aside>
     </>
   );

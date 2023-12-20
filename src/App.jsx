@@ -23,8 +23,11 @@ function App() {
   const [popularityGames, setPopularityGames] = useState([]);
   const [relevanceGames, setRelevanceGames] = useState([]);
 
+  const [darkMode, setDarkMode] = useState(true);
+  const changeMode = () => setDarkMode(!darkMode);
+
   return (
-    <>
+    <section className={darkMode ? "darkMode" : "lightMode"}>
       <AllGamesContext.Provider value={{ allGames, setAllGames }}>
         <PopularityContext.Provider
           value={{ popularityGames, setPopularityGames }}
@@ -37,7 +40,7 @@ function App() {
             <FetchRelevance />
             <BrowserRouter>
               <Nav />
-              <Menu />
+              <Menu onClick={changeMode} darkMode={darkMode} />
 
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -49,7 +52,7 @@ function App() {
           </RelevanceContext.Provider>
         </PopularityContext.Provider>
       </AllGamesContext.Provider>
-    </>
+    </section>
   );
 }
 

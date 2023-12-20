@@ -32,3 +32,11 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
+
+.lightMode {
+  --card-background: #d9e3ed;
+  --primary: #ffffff;
+  --text-title: #ffffff;
+  --text-description: #375470;
+  --primary-medium: #afc7df;
+}

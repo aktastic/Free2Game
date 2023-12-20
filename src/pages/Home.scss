@@ -4,13 +4,16 @@
   flex-direction: column;
   color: var(--text-title);
   font-family: "Oswald";
-
   margin-left: 5rem;
+
+  //   sections
   main {
     padding: 5% 5%;
     display: flex;
     flex-direction: column;
     gap: 6rem;
+
+    // section1 and section 3: recently add and Top 4 Games for Browser
     .topForBrowser,
     .recentlyAdded {
       display: flex;
@@ -21,20 +24,28 @@
         align-self: flex-end;
       }
     }
+    //  section2: Top 4 Games for PC
     .topForPC {
       display: flex;
       flex-direction: column;
       gap: 2rem;
       .topForPcCards {
         display: grid;
-        grid-template-columns: 45% 55%;
+        grid-template-columns: 3fr 4fr;
         gap: 1.5rem;
 
+        //  Top 1 Game for PC
         .card_vertical_PC {
           position: relative;
           display: flex;
           flex-direction: column;
-
+          svg {
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            fill: var(--highlight);
+            opacity: 0.8;
+          }
           & > img {
             width: 100%;
             height: 100%;
@@ -61,6 +72,7 @@
         .card_vertical_PC:hover {
           transform: scale(1.05);
         }
+        // top 2-4 Games for PC
         .horizontal_cards {
           display: flex;
           flex-direction: column;
