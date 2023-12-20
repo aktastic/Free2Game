@@ -1,0 +1,54 @@
+footer {
+  border-top: 1px solid rgba(175, 199, 223, 0.2);
+  padding: 1% 5%;
+  font-family: "Titillium Web";
+  color: var(--highlight);
+  font-weight: 200;
+  font-size: 1rem;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75rem;
+    .githubLinks {
+      display: flex;
+      gap: 0.5rem;
+      a {
+        color: var(--text-description);
+        text-decoration: none;
+        font-weight: 200;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .backToTop {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--text-title);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 2%;
+    bottom: 4%;
+    opacity: 1;
+    transition: opacity 2s;
+    svg {
+      margin: 0 auto;
+      stroke: var(--highlight);
+      fill: var(--primary);
+      stroke-width: 0.25rem;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  .backToTop:active {
+    transform: scale(0.95);
+  }
+  .hidden {
+    opacity: 0;
+    transition: opacity 2s, visibility 2s;
+  }
+}
