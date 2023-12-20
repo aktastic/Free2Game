@@ -1,8 +1,3 @@
-
-
-
-const Home = () => {
-
 import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import Footer from "../components/Footer";
@@ -13,7 +8,7 @@ import { PopularityContext } from "../context/FetchContext";
 import "./Home.scss";
 import { useContext } from "react";
 
-const Home = (props) => {
+const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
@@ -29,7 +24,6 @@ const Home = (props) => {
   const popularGamesInPC = popularityGames.filter((game) =>
     game.platform.toLowerCase().includes("pc")
   );
-
 
   return (
     <section className="HomePage">
