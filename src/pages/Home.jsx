@@ -2,11 +2,14 @@ import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import Footer from "../components/Footer";
 import Vector from "../img/Vector.svg";
+import Group from "../img/Group.svg";
 import Card from "../components/Card";
 import { AllGamesContext } from "../context/FetchContext";
 import { PopularityContext } from "../context/FetchContext";
 import "./Home.scss";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import CardHorizontal from "../components/CardHorizontal";
+import HeaderBanner from "../components/HeaderBanner";
 
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
@@ -15,65 +18,75 @@ const Home = () => {
       new Date(game2.release_date).getTime() -
       new Date(game1.release_date).getTime()
   );
-
+  const recentlyAddedGames = GamesSortByDate.slice(0, 4);
   const { popularityGames, setPopularityGames } = useContext(PopularityContext);
-
   const popularGamesInBrowser = popularityGames.filter((game) =>
     game.platform.toLowerCase().includes("browser")
   );
+  const top4InBrowser = popularGamesInBrowser.slice(0, 4);
   const popularGamesInPC = popularityGames.filter((game) =>
     game.platform.toLowerCase().includes("pc")
   );
+  const top2_4InPc = popularGamesInPC.slice(1, 4);
 
   return (
     <section className="HomePage">
-      <div className="headerPoster" name="top">
-        <img src="" alt="" />
-        <h1>Find & track the best free-to-play games!</h1>
-      </div>
+      <HeaderBanner />
       <main>
         <section className="recentlyAdded">
           <h2>Recently Added</h2>
           <div>
-            <Card
-              thumbnail={GamesSortByDate[0]?.thumbnail}
-              title={GamesSortByDate[0]?.title}
-            />
-            <Card
-              thumbnail={GamesSortByDate[1]?.thumbnail}
-              title={GamesSortByDate[1]?.title}
-            />
-            <Card
-              thumbnail={GamesSortByDate[2]?.thumbnail}
-              title={GamesSortByDate[2]?.title}
-            />
-            <Card
-              thumbnail={GamesSortByDate[3]?.thumbnail}
-              title={GamesSortByDate[3]?.title}
-            />
+            {recentlyAddedGames?.map((game, index) => (
+              <Card
+                key={index}
+                thumbnail={game.thumbnail}
+                title={game.title}
+                genre={game.genre}
+                platform={game.platform}
+                svg={game.platform === "PC (Windows)" ? Vector : Group}
+              />
+            ))}
           </div>
           <ButtonFilled name="SHOW MORE" />
         </section>
         <section className="topForPC">
           <h2>Top 4 Games for PC in June 2021</h2>
           <div className="topForPcCards">
-            <Card
-              thumbnail={popularGamesInPC[0]?.thumbnail}
-              title={popularGamesInPC[0]?.title}
-            />
-            <div>
-              <Card
-                thumbnail={popularGamesInPC[1]?.thumbnail}
-                title={popularGamesInPC[1]?.title}
+            <div className="card_vertical_PC">
+              <img
+                src={popularGamesInPC[0]?.thumbnail}
+                alt={popularGamesInPC[0]?.title}
               />
-              <Card
-                thumbnail={popularGamesInPC[2]?.thumbnail}
-                title={popularGamesInPC[2]?.title}
-              />
-              <Card
-                thumbnail={popularGamesInPC[3]?.thumbnail}
-                title={popularGamesInPC[3]?.title}
-              />
+              <div className="over_image">
+                <h2>{popularGamesInPC[0]?.title}</h2>
+                <ButtonFilled name="READ MORE" />
+                <div className="outline_buttons">
+                  <ButtonOutline
+                    name={
+                      <img
+                        src={
+                          popularGamesInPC[0]?.platform === "PC (Windows)"
+                            ? Group
+                            : Vector
+                        }
+                      />
+                    }
+                  />
+                  <ButtonOutline name={popularGamesInPC[0]?.genre} />
+                </div>
+              </div>
+            </div>
+            <div className="horizontal_cards">
+              {top2_4InPc?.map((game, index) => (
+                <CardHorizontal
+                  key={index}
+                  thumbnail={game.thumbnail}
+                  title={game.title}
+                  genre={game.genre}
+                  platform={game.platform}
+                  svg={game.platform === "PC (Windows)" ? Vector : Group}
+                />
+              ))}
             </div>
           </div>
           <ButtonFilled name="SHOW MORE" />
@@ -81,23 +94,18 @@ const Home = () => {
         <section className="topForBrowser">
           <h2>Top 4 Games for Browser in June 2021</h2>
           <div>
-            <Card
-              thumbnail={popularGamesInBrowser[0]?.thumbnail}
-              title={popularGamesInBrowser[0]?.title}
-            />
-            <Card
-              thumbnail={popularGamesInBrowser[1]?.thumbnail}
-              title={popularGamesInBrowser[1]?.title}
-            />
-            <Card
-              thumbnail={popularGamesInBrowser[2]?.thumbnail}
-              title={popularGamesInBrowser[2]?.title}
-            />
-            <Card
-              thumbnail={popularGamesInBrowser[3]?.thumbnail}
-              title={popularGamesInBrowser[3]?.title}
-            />
+            {top4InBrowser?.map((game, index) => (
+              <Card
+                key={index}
+                thumbnail={game.thumbnail}
+                title={game.title}
+                genre={game.genre}
+                platform={game.platform}
+                svg={game.platform === "PC (Windows)" ? Vector : Group}
+              />
+            ))}
           </div>
+          <ButtonFilled name="SHOW MORE" />
         </section>
       </main>
 

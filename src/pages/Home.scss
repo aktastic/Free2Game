@@ -2,27 +2,9 @@
   background-color: var(--primary);
   display: flex;
   flex-direction: column;
-
   color: var(--text-title);
   font-family: "Oswald";
-  .headerPoster {
-    position: relative;
-    background-image: url(https://s3-alpha-sig.figma.com/img/e46e/a13e/edca41e09f3165a56127089593f6d3fc?Expires=1704067200&Signature=pUx0UJU9FJhlby~l1yIDtSezo9hCJ0rcrPxct941PD-aio7krdmdW7SQbupdJZWovVK5ZInoTtyPR-eUrMqZK4Nckd2Q9KOcwgbQz9Rbkkn2ZMNyMtCKqLSqN8oBWN0iM9dP39IBsrDNsQRfibizWpb9SiA2SNDnTWCrNHtuwnLHm1SDOxbXS~1Hy4RcsSmVhWG6JOiA6aFRrl-WOEq0FgkJJtFAKl3KWmscAyfRpOkHLLtLfYbUswwlM0zca7IkN3iSH9Jbx4kAmsvt2rsDbfRuBlgB00x09XMduUgzlpWSR5OeiICzMOv-rfmtUiaibGKY6-FIMT~GUFWqekMt1Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
-    height: 70vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    h1 {
-      width: 24rem;
-      font-size: 3rem;
-      font-weight: 700;
-      position: absolute;
-      bottom: 4.5rem;
-      left: 5rem;
-      color: var(--text-title);
-      text-transform: uppercase;
-    }
-  }
+
   main {
     padding: 5% 5%;
     display: flex;
@@ -33,7 +15,7 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      div {
+      & > div {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -44,7 +26,7 @@
           height: 40vh;
         }
       }
-      button {
+      & > button {
         align-self: flex-end;
       }
     }
@@ -53,24 +35,56 @@
       flex-direction: column;
       gap: 2rem;
       .topForPcCards {
-        p {
-          background-color: rgb(255, 157, 127);
-          padding: 0;
-          margin: 0;
-        }
         display: grid;
         grid-template-columns: 2fr 3fr;
         gap: 1.5rem;
-        div {
+
+        .card_vertical_PC {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+
+          & > img {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            object-fit: cover;
+          }
+          .over_image {
+            position: absolute;
+            bottom: 5%;
+            left: 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 2vw;
+            h2 {
+              font-size: 3rem;
+            }
+
+            .outline_buttons {
+              display: flex;
+              gap: 0.75rem;
+            }
+          }
+        }
+        .card_vertical_PC:hover {
+          transform: scale(1.05);
+        }
+        .horizontal_cards {
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
-          p {
-            height: 20vh;
-          }
         }
       }
-      button {
+      @media (max-width: 1200px) {
+        .topForPcCards {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+      }
+
+      & > button {
         align-self: flex-end;
       }
     }
