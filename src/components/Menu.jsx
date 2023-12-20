@@ -3,6 +3,7 @@ import hamburger from "../img/Burger-Icon.svg";
 import homeIcon from "../img/Home.svg";
 import addIcon from "../img/Recently-Added.svg";
 import logoIcon from "../img/logo.svg";
+import gamesIcon from "../img/Games.png"
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
@@ -50,6 +51,7 @@ const MenuNew = () => {
       <aside
         className={hamburgerNotClicked ? "sidebar" : "sidebar sidebar_open"}
       >
+        {/* Hamburger Menu */}
         <div>
           <img
             className="hamburger-menu"
@@ -57,15 +59,15 @@ const MenuNew = () => {
             alt="Hamburger Menu"
             onClick={openHamburgerMenu}
           />
-
+        {/* Close Icon */}
           <a
             href="#"
             className={
-              closeIconVisible ? "close-icon-visible" : "close-icon-unvisible"
+              closeIconVisible ? "close-icon-visible" : "close-icon-invisible"
             }
             onClick={closeHamburgerMenu}
           >
-            &times;
+            &#10005;
           </a>
         </div>
 
@@ -78,7 +80,7 @@ const MenuNew = () => {
                 <span
                   className={
                     hamburgerNotClicked
-                      ? "nav-item-unvisible"
+                      ? "nav-item-invisible"
                       : "nav-item-visible"
                   }
                 >
@@ -89,11 +91,11 @@ const MenuNew = () => {
             {/* Games */}
             <li>
               <NavLink to="/allgames">
-                <img src="./../../public/Games.png" alt="" />
+                <img src={gamesIcon} alt="" />
                 <span
                   className={
                     hamburgerNotClicked
-                      ? "nav-item-unvisible"
+                      ? "nav-item-invisible"
                       : "nav-item-visible"
                   }
                 >
@@ -108,7 +110,7 @@ const MenuNew = () => {
                 <span
                   className={
                     hamburgerNotClicked
-                      ? "nav-item-unvisible"
+                      ? "nav-item-invisible"
                       : "nav-item-visible"
                   }
                 >

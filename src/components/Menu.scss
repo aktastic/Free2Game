@@ -1,10 +1,11 @@
 .sidebar {
   // background-color: var(--primary);
   background-color: var(--primary);
-  height: 100vh;
+  height: 100%;
   width: 80px;
   border-right: 2px solid white;
-  position: absolute;
+  // position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   transition: all 0.4s ease;
@@ -16,7 +17,7 @@
       cursor: pointer;
     }
 
-    .close-icon-unvisible {
+    .close-icon-invisible {
       visibility: hidden;
       color: white;
       font-size: 2.5rem;
@@ -41,8 +42,8 @@
           align-items: center;
           gap: 10px;
 
-          // Icon-Titel (Home, All Games, Recently added)
-          .nav-item-unvisible {
+          // Icon-Titel (Home, All Games, Recently Added)
+          .nav-item-invisible {
             display: none;
           }
         }
@@ -78,31 +79,15 @@
   visibility: visible;
   color: white;
   font-size: 2.5rem;
+  line-height: 0.8;
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
 }
 
-// active
-.sidebar_open + .main-content {
-  background-color: gold;
-  // funktioniert nicht
-  left: 260px;
-  width: calc(100% - 260px);
-}
-
 // to do:
 // Beim Schließen der Sidebar ist die Transition nicht drin - Bewegung zu hart!
-.main-content {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  position: absolute;
-  left: 120px;
-  top: 24px;
-}
 
 .main-content-side {
   display: flex;
@@ -113,6 +98,7 @@
   left: 320px;
   top: 24px;
   transition: all 0.4s ease;
+  z-index: 998;
 }
 
 .main-content-close {
@@ -124,4 +110,5 @@
   left: 120px;
   top: 24px;
   transition: all 0.4s ease;
+  z-index: 997;
 }
