@@ -4,7 +4,8 @@ import Vector from '../img/Vector.svg'
 import Group from '../img/Group.svg'
 import { AllGamesContext, PopularityContext } from "../context/FetchContext";
 import Card from "../components/Card";
-
+import HeaderAllGame from "../components/HeaderAllGame";
+import './AllGames.scss'
 const AllGames = () => {
   const { allGames, setAllGanes } = useContext(AllGamesContext)
   const {popularityGames, setPopularityGames} = useContext(PopularityContext)
@@ -66,7 +67,9 @@ const AllGames = () => {
   
   return (
     <>
-      <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}}/>
+    <section className="AllGamePage">
+      <HeaderAllGame/>
+    <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}}/>
       <div>
       <ul>
           {selectedFilters.filter1 ? (
@@ -106,6 +109,8 @@ const AllGames = () => {
         filterfunc4={()=>{handleFilter('filter1',"Web Browser")}}
         />)}
       </section>
+    </section>
+    
     </>
   );
 };
