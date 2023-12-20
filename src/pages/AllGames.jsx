@@ -15,7 +15,7 @@ const AllGames = () => {
   const [loading, setLoading] = useState(false)
   
   
-  console.log(allGames.sort((a,b)=> a.title > b.title));
+  
 
   useEffect(()=>{
     if(allGames.length <=0){
@@ -23,6 +23,27 @@ const AllGames = () => {
     } else{
       setMapData(allGames)}
 
+      if(selectedFilters.filter1!== null && selectedFilters.filter2 !== null){
+        const filteredBoth = allGames.filter((game)=>{
+          return game.platform === selectedFilters.filter1  && game.genre === selectedFilters.filter2
+        })
+        
+        setMapData(filteredBoth)
+      }
+      if(selectedFilters.filter1!== null && selectedFilters.filter2 === null){
+        const filteredFirst = allGames.filter((game)=>{
+          return game.platform === selectedFilters.filter1
+        })
+        
+        setMapData(filteredFirst)
+      }
+      if(selectedFilters.filter1=== null && selectedFilters.filter2 !== null){
+        const filteredSecond = allGames.filter((game)=>{
+          return game.genre === selectedFilters.filter2
+        })
+        
+        setMapData(filteredSecond)
+      }
     
     if(selectedSort === 'popularity'){
       setMapData(popularityGames)
@@ -32,8 +53,17 @@ const AllGames = () => {
       const sortedAlph = [...mapData].sort((a,b)=>{if(a.title<b.title)return -1})
       setMapData(sortedAlph)
     }
-    
-  },[loading, selectedSort])
+    if(selectedSort === 'Release(desc)'){
+      const sortedDesc = [...mapData].sort((a,b)=> new Date(b.release_date)- new Date(a.release_date))
+      console.log(sortedDesc);
+      setMapData(sortedDesc)
+    }
+    if(selectedSort === 'Release(asc)'){
+      const sortedAsc = [...mapData].sort((a,b)=> new Date(a.release_date)- new Date(b.release_date))
+      console.log(sortedAsc);
+      setMapData(sortedAsc)
+    }
+  },[loading, selectedSort , selectedFilters])
   console.log(allGames);
   const handleFilter = (filterType, value) =>{
     setSelectedFilters(prevFilters=>({...prevFilters, [filterType]:value}))
