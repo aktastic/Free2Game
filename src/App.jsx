@@ -18,7 +18,6 @@ import Menu from "./components/Menu";
 
 import "./App.scss";
 
-
 function App() {
   const [allGames, setAllGames] = useState([]);
   const [popularityGames, setPopularityGames] = useState([]);
@@ -37,8 +36,8 @@ function App() {
             <FetchPopularity />
             <FetchRelevance />
             <BrowserRouter>
-            {/* <Nav />
-            <Menu />     */}
+              <Nav />
+              <Menu />
 
               <Routes>
                 <Route path="/" element={<Home />} />

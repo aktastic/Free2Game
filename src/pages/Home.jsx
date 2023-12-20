@@ -36,7 +36,7 @@ const Home = () => {
       <main>
         <section className="recentlyAdded">
           <h2>Recently Added</h2>
-          <div>
+          <div className="grid_layout">
             {recentlyAddedGames?.map((game, index) => (
               <Card
                 key={index}
@@ -98,7 +98,7 @@ const Home = () => {
         </section>
         <section className="topForBrowser">
           <h2>Top 4 Games for Browser in June 2021</h2>
-          <div>
+          <div className="grid_layout">
             {top4InBrowser?.map((game, index) => (
               <Card
                 key={index}

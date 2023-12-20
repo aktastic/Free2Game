@@ -5,6 +5,7 @@
   color: var(--text-title);
   font-family: "Oswald";
 
+  margin-left: 5rem;
   main {
     padding: 5% 5%;
     display: flex;
@@ -15,17 +16,7 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
-      & > div {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        p {
-          background-color: rgb(255, 157, 127);
-          width: 100%;
-          height: 40vh;
-        }
-      }
+
       & > button {
         align-self: flex-end;
       }
@@ -36,7 +27,7 @@
       gap: 2rem;
       .topForPcCards {
         display: grid;
-        grid-template-columns: 2fr 3fr;
+        grid-template-columns: 45% 55%;
         gap: 1.5rem;
 
         .card_vertical_PC {
