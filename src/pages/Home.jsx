@@ -142,7 +142,7 @@ const Home = () => {
         </section>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 };

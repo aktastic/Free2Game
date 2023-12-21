@@ -19,6 +19,7 @@ import Nav from "./components/Nav";
 import Menu from "./components/Menu";
 
 import "./App.scss";
+import Footer from "./components/Footer";
 
 function App() {
   const [allGames, setAllGames] = useState([]);
@@ -56,6 +57,7 @@ function App() {
                   {/* Test Details */}
                   <Route path="/details" element={<Details />} />
                 </Routes>
+                <Footer />
               </BrowserRouter>
             </DetailsContext.Provider>
           </RelevanceContext.Provider>
