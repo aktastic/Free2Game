@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
 
 import { AllGamesContext } from "../context/FetchContext";
@@ -12,13 +12,28 @@ import Group from "../img/Group.svg";
 import Card from "../components/Card";
 import CardHorizontal from "../components/CardHorizontal";
 import HeaderBanner from "../components/HeaderBanner";
+
+import { Link, useNavigate } from "react-router-dom";
+import Nav from "../components/Nav";
 import TopIcon from "../components/TopIcon";
 
 import "./Home.scss";
-
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
   const [top1GameInPc, setTop1GameInPc] = useState({});
+  const navigate = useNavigate()
+  const gameFilter = (searchInput) =>{
+    const filtered = allGames.filter((game)=>{
+      return game.title.toLowerCase().includes(searchInput.toLowerCase())
+    })
+    navigate('/allgames', {state: filtered})
+  }
+
+
+
+
+  
+
 
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
@@ -46,6 +61,8 @@ const Home = () => {
   }, [top1InPcID]);
   console.log(recentlyAddedGames);
   return (
+    <>
+    <Nav searchFunc={gameFilter} btnShow={true}/>
     <section className="HomePage">
       <HeaderBanner
         url="https://media.discordapp.net/attachments/1186291209308741684/1186332027457392710/Gruppenbild.jpg?ex=6592dccc&is=658067cc&hm=9d3c25cca16df8ee336ac05851db8ecb20752037c35b49b77e3d85f6b3ad71f8&=&format=webp&width=1588&height=794"
@@ -144,6 +161,7 @@ const Home = () => {
 
       {/* <Footer /> */}
     </section>
+    </>
   );
 };
 

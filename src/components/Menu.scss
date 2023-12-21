@@ -1,17 +1,13 @@
 .sidebar {
-  // background-color: var(--primary);
   background-color: var(--primary);
   height: 100%;
   width: 80px;
   border-right: 2px solid white;
-
   position: fixed;
   top: 0;
   left: 0;
-  transition: all 0.4s ease;
-
+  // transition: all 0.4s ease;
   z-index: 1100;
-
 
   // Icons: Hamburger + Close
   div {
@@ -40,6 +36,7 @@
         list-style-type: none;
 
         a {
+          height: 56px;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -47,6 +44,7 @@
           // Icon-Titel (Home, All Games, Recently Added)
           .nav-item-invisible {
             display: none;
+            flex-grow: 1;
           }
         }
 
@@ -54,21 +52,37 @@
           background-color: var(--highlight);
           border-radius: 12px;
         }
+
+        // Lightmode/Darkmode
+        // &:nth-of-type(4) {
+        // margin-top: 50px;
+        // display: flex;
+        // align-items: center;
+        // cursor: pointer;
+        // font-family: "Titillium Web";
+
+        // .nav-item-invisible {
+        //   display: none;
+        // }
+
+        // img {
+        //   margin: 10px;
+        //   width: 30px;
+        //   height: 30px;
+        // }
+
+        // span {
+        //   padding-left: 12px;
+        //   font-size: 1rem;
+        //   flex-grow: 1;
+        // }
+
+        // .mode:active {
+        //   transform: scale(0.85);
+        // }
       }
     }
-  }
-
-  .mode {
-    display: flex;
-    img {
-      display: block;
-      width: 1.75rem;
-      margin-inline: auto;
-      cursor: pointer;
-    }
-  }
-  .mode:active {
-    transform: scale(0.85);
+    // }
   }
 }
 
@@ -86,6 +100,7 @@
     padding-block: 10px;
     color: white;
     font-size: 1.5rem;
+    flex-grow: 1;
   }
 }
 
@@ -101,8 +116,6 @@
   z-index: 1000;
 }
 
-// to do:
-// Beim Schließen der Sidebar ist die Transition nicht drin - Bewegung zu hart!
 .link_to_home {
   height: 43px;
   width: 120px;
@@ -122,7 +135,7 @@
     position: absolute;
     left: 320px;
     top: 24px;
-    transition: all 0.4s ease;
+    // transition: all 0.4s ease;
     z-index: 994;
 
     // Logo
@@ -130,22 +143,19 @@
       position: fixed;
       top: 16px;
       left: 280px;
-      transition: all 0.4s ease;
-      background-color: #040f14d6;
+      // transition: all 0.4s ease;
       padding: 8px 20px;
-      border-radius: 12px 0% 0% 12px / 33% 33% 33% 33%;
     }
     // Companyname
-    h3 {
+    h2 {
+      padding: 8px 20px;
       position: fixed;
-      top: 16px;
-      left: 353px;
-      transition: all 0.4s ease;
-      background-color: #040f14d6;
-      padding: 8px 20px 8px 4px;
+      top: 12px;
+      left: 333px;
+      // transition: all 0.4s ease;
+
       // Höhe = Höhe vom img
-      height: 43px;
-      border-radius: 0px 12px 12px 0px / 33% 33% 33% 33%;
+      height: 40px;
     }
   }
 
@@ -158,30 +168,25 @@
     position: absolute;
     left: 120px;
     top: 24px;
-    transition: all 0.4s ease;
+    // transition: all 0.4s ease;
     z-index: 993;
 
     img {
-      width: 120px;
-      height: 40px;
-      position: fixed;
-      top: 16px;
-      left: 100px;
-      transition: all 0.4s ease;
-      background-color: #040f14d6;
       padding: 8px 20px;
-      border-radius: 12px 0% 0% 12px / 33% 33% 33% 33%;
-    }
-    h3 {
+      // height: 43px;
       position: fixed;
       top: 16px;
-      left: 173px;
-      transition: all 0.4s ease;
-      background-color: #040f14d6;
-      padding: 8px 20px 8px 4px;
+      left: 110px;
+      // transition: all 0.4s ease;
+    }
+    h2 {
+      padding: 8px 20px;
+      position: fixed;
+      top: 12px;
+      left: 163px;
+      // transition: all 0.4s ease;
       // Höhe = Höhe vom img
-      height: 43px;
-      border-radius: 0px 12px 12px 0px / 33% 33% 33% 33%;
+      height: 40px;
     }
   }
 }

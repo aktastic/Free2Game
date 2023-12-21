@@ -46,7 +46,6 @@ function App() {
               <FetchPopularity />
               <FetchRelevance />
               <BrowserRouter>
-                <Nav />
                 <Menu onClick={changeMode} darkMode={darkMode} />
 
                 <Routes>
