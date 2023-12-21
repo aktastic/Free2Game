@@ -14,6 +14,7 @@ const Card = (props) => {
         <article>
           <div className="over_line">
             <h2>{props.title}</h2>
+            <p>{props.description} </p>
             <ButtonFilled
               navigateFunc={() => navigate(`/details/${props.id}`)}
               name="READ MORE"
