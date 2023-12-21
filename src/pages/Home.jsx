@@ -82,9 +82,11 @@ const Home = () => {
               <TopIcon name="1" />
               <div className="over_image">
                 <h2>{popularGamesInPC[0]?.title}</h2>
+
                 <Link to={`/details/${popularGamesInPC[0]?.id}`}>
                   <ButtonFilled name="READ MORE" />
                 </Link>
+
                 <div className="outline_buttons">
                   <ButtonOutline
                     name={
