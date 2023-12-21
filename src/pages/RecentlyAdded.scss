@@ -16,25 +16,28 @@
 .recentlyAdded__Wrapper {
   margin-top: 5%;
   display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
-  gap: 2rem;
+  padding-left: 100px;
+  justify-content: space-between;
 
   .cardsContainer {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-    // justify-content: center;
-    // align-items: center;
-    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
 
-    .btn_Navigation {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .btn_Navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-      img {
-        cursor: pointer;
+    img {
+      cursor: pointer;
+      background: #375470;
+      border: 2px solid #ff4654;
+      border-radius: 50px;
+      &:nth-of-type(1) {
+        margin-inline: 12px;
       }
     }
   }

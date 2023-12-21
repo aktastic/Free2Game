@@ -26,3 +26,18 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.grid_layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.lightMode {
+  --card-background: #afc7df;
+  --primary: #ffffff;
+  --text-title: #375470;
+  --text-description: #375470;
+  --primary-medium: #102130;
+}
