@@ -1,16 +1,19 @@
+import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+
+import { AllGamesContext } from "../context/FetchContext";
+import { PopularityContext } from "../context/FetchContext";
+
 import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import Footer from "../components/Footer";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
 import Card from "../components/Card";
-import { AllGamesContext } from "../context/FetchContext";
-import { PopularityContext } from "../context/FetchContext";
-import "./Home.scss";
-import { useContext, useState } from "react";
 import CardHorizontal from "../components/CardHorizontal";
 import HeaderBanner from "../components/HeaderBanner";
-import { Link } from "react-router-dom";
+
+import "./Home.scss";
 
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
@@ -29,7 +32,17 @@ const Home = () => {
     game.platform.toLowerCase().includes("pc")
   );
   const top2_4InPc = popularGamesInPC.slice(1, 4);
+  const top1InPcID = popularGamesInPC[0]?.id;
 
+  const [top1GameInPc, setTop1GameInPc] = useState({});
+  useEffect(() => {
+    if (top1InPcID) {
+      fetch(`https://www.freetogame.com/api/game?id=${top1InPcID}`)
+        .then((res) => res.json())
+        .then((game) => setTop1GameInPc(game));
+    }
+  }, [top1InPcID]);
+  console.log(top1GameInPc);
   const trophies = [
     <svg width="50" height="80.2" viewBox="0 0 50 80.2" key={0}>
       <g>
@@ -60,7 +73,7 @@ const Home = () => {
       </g>
     </svg>,
   ];
-  console.log(trophies[0]);
+
   return (
     <section className="HomePage">
       <HeaderBanner />
@@ -68,9 +81,9 @@ const Home = () => {
         <section className="recentlyAdded">
           <h2>Recently Added</h2>
           <div className="grid_layout">
-            {recentlyAddedGames?.map((game, index) => (
+            {recentlyAddedGames?.map((game) => (
               <Card
-                key={index}
+                key={game.id}
                 id={game.id}
                 thumbnail={game.thumbnail}
                 title={game.title}
@@ -87,8 +100,12 @@ const Home = () => {
           <div className="topForPcCards">
             <div className="card_vertical_PC">
               <img
-                src={popularGamesInPC[0]?.thumbnail}
-                alt={popularGamesInPC[0]?.title}
+                src={
+                  top1GameInPc.screenshots
+                    ? top1GameInPc.screenshots[0].image
+                    : popularGamesInPC[0]?.thumbnail
+                }
+                alt={top1GameInPc.title}
               />
               <svg width="50" height="80.2" viewBox="0 0 50 80.2">
                 <g>

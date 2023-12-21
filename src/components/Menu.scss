@@ -9,6 +9,7 @@
   left: 0;
   transition: all 0.4s ease;
   z-index: 9999;
+  padding-bottom: 2rem;
 
   // Icons: Hamburger + Close
   div {
@@ -56,10 +57,13 @@
   }
 
   .mode {
-    display: block;
-    width: 1.75rem;
-    margin: 0 auto;
-    cursor: pointer;
+    display: flex;
+    img {
+      display: block;
+      width: 1.75rem;
+      margin-inline: auto;
+      cursor: pointer;
+    }
   }
   .mode:active {
     transform: scale(0.85);

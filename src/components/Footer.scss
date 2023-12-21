@@ -1,5 +1,5 @@
 footer {
-  border-top: 1px solid rgba(175, 199, 223, 0.2);
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
   padding: 1% 5%;
   font-family: "Titillium Web";
   color: var(--highlight);
@@ -16,7 +16,7 @@ footer {
       a {
         color: var(--text-description);
         text-decoration: none;
-        font-weight: 200;
+        font-weight: 500;
       }
       a:hover {
         text-decoration: underline;

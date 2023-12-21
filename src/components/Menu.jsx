@@ -121,12 +121,10 @@ const MenuNew = (props) => {
           </ul>
         </nav>
 
-        <img
-          className="mode"
-          onClick={props.onClick}
-          src={props.darkMode ? sun : moon}
-          alt="sun"
-        />
+        <div className="mode" onClick={props.onClick}>
+          <img src={props.darkMode ? sun : moon} alt="mode" />
+          <p>{props.darkMode ? "Light Mode" : "Dark Mode"}</p>
+        </div>
       </aside>
     </>
   );
