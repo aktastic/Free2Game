@@ -37,7 +37,7 @@ function App() {
             <FetchPopularity />
             <FetchRelevance />
             <BrowserRouter>
-            <Nav />
+            
             <Menu />    
 
               <Routes>
@@ -45,7 +45,7 @@ function App() {
                 <Route path="/details/:id" element={<Details />} />
                 <Route path="/allgames" element={<AllGames />} />
                 <Route path="/recentlyadded" element={<RecentlyAdded />} />
-                {/* Test Details */}
+                
                 <Route path="/details" element={<Details />}/>
               </Routes>
             </BrowserRouter>

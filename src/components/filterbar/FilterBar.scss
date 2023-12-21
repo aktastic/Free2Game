@@ -1,11 +1,23 @@
-.Select__menu {
-    margin-top: 8px;
-  }
-  
-  .Select__option {
-    margin-bottom: 4px;
-  }
-  
-  .Select__option:last-child {
-    margin-bottom: 0;
-  }
+.filterdiv{
+    display: flex;
+    gap: 3%;
+    padding: 3%;
+}
+
+.filterdiv select{
+    padding-block: 12px;
+    padding-inline: 24px;
+    font-family: 'Oswald';
+    font-size: 18px;
+    background-color: var(--highlight);
+    border-radius: 12px;
+    color: var(--text-title);
+    width: 25%;
+    cursor: pointer;
+}
+
+.filterdiv select:hover{
+    border: 3px solid #afc7df;
+}
+
+

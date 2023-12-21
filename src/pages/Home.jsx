@@ -10,10 +10,18 @@ import "./Home.scss";
 import { useContext, useState } from "react";
 import CardHorizontal from "../components/CardHorizontal";
 import HeaderBanner from "../components/HeaderBanner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Nav from "../components/Nav";
 
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
+  const navigate = useNavigate()
+  const gameFilter = (searchInput) =>{
+    const filtered = allGames.filter((game)=>{
+      return game.title.toLowerCase().includes(searchInput.toLowerCase())
+    })
+    navigate('/allgames', {state: filtered})
+  }
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -
@@ -31,6 +39,8 @@ const Home = () => {
   const top2_4InPc = popularGamesInPC.slice(1, 4);
 
   return (
+    <>
+    <Nav searchFunc={gameFilter} btnShow={true}/>
     <section className="HomePage">
       <HeaderBanner />
       <main>
@@ -117,6 +127,7 @@ const Home = () => {
 
       <Footer />
     </section>
+    </>
   );
 };
 
