@@ -1,8 +1,6 @@
 .topnav_container {
-    margin: 6px 24px 0 0;
-    // margin: 6px 24px 0 72px;
-    padding-left: 24px;
-    padding-block: 12px;
+    padding-right: 24px;
+    padding-block: 18px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -11,6 +9,7 @@
     right: 0;
     left: 0;
     z-index: 999;
+    background-color: rgba(4, 15, 20, 0.9);
 
     > div {
         display: flex;
