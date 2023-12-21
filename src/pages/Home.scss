@@ -14,6 +14,16 @@
     gap: 6rem;
 
     // section1 and section 3: recently add and Top 4 Games for Browser
+
+    .recentlyAdded {
+      .grid_layout {
+        .Card__Design {
+          article {
+            height: 360px;
+          }
+        }
+      }
+    }
     .topForBrowser,
     .recentlyAdded {
       display: flex;
@@ -39,12 +49,12 @@
           position: relative;
           display: flex;
           flex-direction: column;
-          svg {
+          .top_icons {
             position: absolute;
-            top: 0;
+            top: 1rem;
             right: 1rem;
             fill: var(--highlight);
-            opacity: 0.8;
+            // opacity: 0.8;
           }
           & > img {
             width: 100%;

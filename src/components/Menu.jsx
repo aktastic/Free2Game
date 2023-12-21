@@ -6,7 +6,7 @@ import logowhite from "../img/logowhite.png";
 import logoIcon from "../img/logo.svg";
 import logoWide from "../img/logowide.png";
 import logoNew from "../img/logonew.png";
-import gamesIcon from "../img/Games.png"
+import gamesIcon from "../img/Games.png";
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import moon from "../img/moon.png";
@@ -43,11 +43,11 @@ const MenuNew = (props) => {
   // für Logo- & Companyname-Link: Bei Klick auf Link, scrollt die Home-Page automatisch nach oben
   const scrollToTop = () => {
     window.scroll({
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth'
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
-  }
+  };
 
   return (
     <>
@@ -55,7 +55,7 @@ const MenuNew = (props) => {
       <Link to="/" className="link_to_home" onClick={scrollToTop}>
         <div
           className={
-            hamburgerNotClicked ? "main-content-close" :  "main-content-side"
+            hamburgerNotClicked ? "main-content-close" : "main-content-side"
           }
         >
           {/* <img src={logoIcon} alt="Platzhalter Logo" /> */}
@@ -78,7 +78,7 @@ const MenuNew = (props) => {
             alt="Hamburger Menu"
             onClick={openHamburgerMenu}
           />
-        {/* Close Icon */}
+          {/* Close Icon */}
           <a
             href="#"
             className={
@@ -142,7 +142,13 @@ const MenuNew = (props) => {
 
         <div className="mode" onClick={props.onClick}>
           <img src={props.darkMode ? sun : moon} alt="mode" />
-          <p>{props.darkMode ? "Light Mode" : "Dark Mode"}</p>
+          <p
+          // className={
+          //   hamburgerNotClicked ? "nav-item-invisible" : "nav-item-visible"
+          // }
+          >
+            {props.darkMode ? "Light Mode" : "Dark Mode"}
+          </p>
         </div>
       </aside>
     </>

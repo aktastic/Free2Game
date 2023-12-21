@@ -11,8 +11,8 @@ const CardHorizontal = (props) => {
     <>
       <div className="horizontal_card">
         <img src={props.thumbnail} alt="" />
-        {props.icon}
-        <div>
+        <div className="top_icon">{props.icon}</div>
+        <div className="title_buttons">
           <h2>{props.title}</h2>
           <ButtonFilled
             navigateFunc={() => navigate(`/details/${props.id}`)}
