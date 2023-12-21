@@ -2,7 +2,11 @@
   background-color: var(--card-background);
   display: inline-block;
   border-radius: 25px;
-  // height: 460px;
+
+//   height: 460px;
+
+  margin: 12px 12px;
+
   & > img {
     width: 100%;
     border-top-left-radius: 25px;

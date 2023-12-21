@@ -1,15 +1,17 @@
 .sidebar {
   // background-color: var(--primary);
   background-color: var(--primary);
-  height: 100vh;
+  height: 100%;
   width: 80px;
   border-right: 2px solid white;
+
   position: fixed;
   top: 0;
   left: 0;
   transition: all 0.4s ease;
-  z-index: 9999;
-  padding-bottom: 2rem;
+
+  z-index: 1100;
+
 
   // Icons: Hamburger + Close
   div {
@@ -17,7 +19,7 @@
       cursor: pointer;
     }
 
-    .close-icon-unvisible {
+    .close-icon-invisible {
       visibility: hidden;
       color: white;
       font-size: 2.5rem;
@@ -42,8 +44,8 @@
           align-items: center;
           gap: 10px;
 
-          // Icon-Titel (Home, All Games, Recently added)
-          .nav-item-unvisible {
+          // Icon-Titel (Home, All Games, Recently Added)
+          .nav-item-invisible {
             display: none;
           }
         }
@@ -92,50 +94,94 @@
   visibility: visible;
   color: white;
   font-size: 2.5rem;
+  line-height: 0.8;
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1000;
 }
 
-// active
-.sidebar_open + .main-content {
-  background-color: gold;
-  // funktioniert nicht
-  left: 260px;
-  width: calc(100% - 260px);
-}
-
 // to do:
 // Beim Schließen der Sidebar ist die Transition nicht drin - Bewegung zu hart!
-.main-content {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
+.link_to_home {
+  height: 43px;
+  width: 120px;
+  display: block;
   position: absolute;
+  top: 24px;
   left: 120px;
-  top: 24px;
-}
+  z-index: 1001;
+  cursor: pointer;
 
-.main-content-side {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  position: absolute;
-  left: 320px;
-  top: 24px;
-  transition: all 0.4s ease;
-}
+  // Container für Logo + Companyname bei ausgeklapptem Menü
+  .main-content-side {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    left: 320px;
+    top: 24px;
+    transition: all 0.4s ease;
+    z-index: 994;
 
-.main-content-close {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  position: absolute;
-  left: 120px;
-  top: 24px;
-  transition: all 0.4s ease;
+    // Logo
+    img {
+      position: fixed;
+      top: 16px;
+      left: 280px;
+      transition: all 0.4s ease;
+      background-color: #040f14d6;
+      padding: 8px 20px;
+      border-radius: 12px 0% 0% 12px / 33% 33% 33% 33%;
+    }
+    // Companyname
+    h3 {
+      position: fixed;
+      top: 16px;
+      left: 353px;
+      transition: all 0.4s ease;
+      background-color: #040f14d6;
+      padding: 8px 20px 8px 4px;
+      // Höhe = Höhe vom img
+      height: 43px;
+      border-radius: 0px 12px 12px 0px / 33% 33% 33% 33%;
+    }
+  }
+
+  // Container für Logo + Companyname bei gesschlossenem Menü
+  .main-content-close {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    left: 120px;
+    top: 24px;
+    transition: all 0.4s ease;
+    z-index: 993;
+
+    img {
+      width: 120px;
+      height: 40px;
+      position: fixed;
+      top: 16px;
+      left: 100px;
+      transition: all 0.4s ease;
+      background-color: #040f14d6;
+      padding: 8px 20px;
+      border-radius: 12px 0% 0% 12px / 33% 33% 33% 33%;
+    }
+    h3 {
+      position: fixed;
+      top: 16px;
+      left: 173px;
+      transition: all 0.4s ease;
+      background-color: #040f14d6;
+      padding: 8px 20px 8px 4px;
+      // Höhe = Höhe vom img
+      height: 43px;
+      border-radius: 0px 12px 12px 0px / 33% 33% 33% 33%;
+    }
+  }
 }
