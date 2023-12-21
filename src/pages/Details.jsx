@@ -3,6 +3,7 @@ import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import "./Details.scss";
 import { useParams } from "react-router-dom";
+import HeaderBanner from "../components/HeaderBanner";
 
 const Details = () => {
   const { id } = useParams();
@@ -20,13 +21,8 @@ const Details = () => {
 
   return (
     <>
+      <HeaderBanner url={detailsOFGame?.screenshots[0].image} />
       <section className="details_wrapper">
-        <img
-          src={detailsOFGame?.screenshots[0]?.image}
-          alt=""
-          className="headerBanner"
-        />
-        <section className="header_details"></section>
         {/* Details */}
         <article className="details_left">
           <h2>Hier kommen die Main Details</h2>
