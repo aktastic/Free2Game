@@ -1,7 +1,7 @@
 .AllGamePage{
     font-family: "Oswald";
-    position: absolute;
-    left: 120px;
+    
+    margin-left: 120px;
 }
 
 .filterselectwrapper{
@@ -59,7 +59,7 @@
     display: flex;
     padding-left: 100px;
     justify-content: space-between;
-  
+    position: relative;
     .mapWrap {
       width: 100%;
       display: grid;
@@ -71,8 +71,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      &:nth-of-type(1){
+        position: absolute;
+        top: 50%;
+        left: 5%;
+      }
+      &:nth-of-type(2){
+        position: absolute;
+        top: 50%;
+        right: 5%;
+      }
   
       img {
+        // position: fixed;
         cursor: pointer;
         background: #375470;
         border: 2px solid #ff4654;

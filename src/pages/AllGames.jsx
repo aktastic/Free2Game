@@ -22,7 +22,7 @@ const AllGames = () => {
   });
   const [selectedSort, setSelectedSort] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 12;
+  const itemsPerPage = 40;
   const [filterData, setFilterData] = useState([])
   const [mapData, setMapData] = useState(allGames)
   const location = useLocation()
@@ -171,7 +171,7 @@ const gameFilter = (searchInput) =>{
       </section>
           
     </section>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   );
 };

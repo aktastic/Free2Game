@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { useContext, useEffect, useState } from "react";
 
 import { AllGamesContext } from "../context/FetchContext";
@@ -159,7 +159,7 @@ const Home = () => {
         </section>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </section>
     </>
   );
