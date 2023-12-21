@@ -1,16 +1,5 @@
-.heroImg {
-  position: relative;
-  background-image: url(../img/LoL-Banner.png);
-  height: 70vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  p {
-    font-size: 4rem;
-    position: absolute;
-    bottom: 100px;
-    left: 200px;
-  }
+.recently_added_page {
+  margin-inline: 110px 24px;
 }
 
 .recentlyAdded__Wrapper {
@@ -27,18 +16,29 @@
   }
 
   .btn_Navigation {
+    padding: 20px 0 25px 12px;
+    width: 3.2rem;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 100%;
+    border: 2px solid var(--highlight);
+    background-color: var(--primary);
+    color: var(--highlight);
+    font-size: 2.5rem;
+    font-family: "Tillitum web";
 
-    img {
-      cursor: pointer;
-      background: #375470;
-      border: 2px solid #ff4654;
-      border-radius: 50px;
-      &:nth-of-type(1) {
-        margin-inline: 12px;
-      }
-    }
+    // img {
+    //   cursor: pointer;
+    //   background: #375470;
+    //   border: 2px solid #ff4654;
+    //   border-radius: 50px;
+    //   &:nth-of-type(1) {
+    //     margin-inline: 12px;
+    //     width: 50px;
+    //     height: 50px;
+    //   }
+    // }
   }
 }
