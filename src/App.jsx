@@ -18,14 +18,16 @@ import Menu from "./components/Menu";
 
 import "./App.scss";
 
-
 function App() {
   const [allGames, setAllGames] = useState([]);
   const [popularityGames, setPopularityGames] = useState([]);
   const [relevanceGames, setRelevanceGames] = useState([]);
 
+  const [darkMode, setDarkMode] = useState(true);
+  const changeMode = () => setDarkMode(!darkMode);
+
   return (
-    <>
+    <section className={darkMode ? "darkMode" : "lightMode"}>
       <AllGamesContext.Provider value={{ allGames, setAllGames }}>
         <PopularityContext.Provider
           value={{ popularityGames, setPopularityGames }}
@@ -37,8 +39,10 @@ function App() {
             <FetchPopularity />
             <FetchRelevance />
             <BrowserRouter>
-            <Nav />
-            <Menu />    
+
+              <Nav />
+              <Menu onClick={changeMode} darkMode={darkMode} />
+
 
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -52,7 +56,7 @@ function App() {
           </RelevanceContext.Provider>
         </PopularityContext.Provider>
       </AllGamesContext.Provider>
-    </>
+    </section>
   );
 }
 

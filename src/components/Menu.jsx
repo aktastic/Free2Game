@@ -9,8 +9,10 @@ import logoNew from "../img/logonew.png";
 import gamesIcon from "../img/Games.png"
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
+import moon from "../img/moon.png";
+import sun from "../img/sun.png";
 
-const MenuNew = () => {
+const MenuNew = (props) => {
   // btn
   const [hamburgerNotClicked, setHamburgerNotClicked] = useState(true);
 
@@ -137,6 +139,11 @@ const MenuNew = () => {
             </li>
           </ul>
         </nav>
+
+        <div className="mode" onClick={props.onClick}>
+          <img src={props.darkMode ? sun : moon} alt="mode" />
+          <p>{props.darkMode ? "Light Mode" : "Dark Mode"}</p>
+        </div>
       </aside>
     </>
   );

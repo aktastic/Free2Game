@@ -6,14 +6,18 @@ import "./CardHorizontal.scss";
 import { useNavigate } from "react-router-dom";
 
 const CardHorizontal = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <div className="horizontal_card">
         <img src={props.thumbnail} alt="" />
+        {props.icon}
         <div>
           <h2>{props.title}</h2>
-          <ButtonFilled navigateFunc= {()=>navigate(`/details/${props.id}`)} name="READ MORE" />
+          <ButtonFilled
+            navigateFunc={() => navigate(`/details/${props.id}`)}
+            name="READ MORE"
+          />
           {props.platform === "PC (Windows), Web Browser" ? (
             <div className="Bottom_Btns">
               <ButtonOutline name={<img src={Vector} alt="Windows Logo" />} />

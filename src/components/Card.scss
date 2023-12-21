@@ -1,7 +1,10 @@
 .Card__Design {
-  background-color: #102130;
+  background-color: var(--card-background);
   display: inline-block;
   border-radius: 25px;
+
+//   height: 460px;
+
   margin: 12px 12px;
 
   & > img {
@@ -10,27 +13,30 @@
     border-top-right-radius: 25px;
   }
   article {
-    padding: 2.25rem 1.5rem;
-    h2 {
-      color: white;
-      text-align: left;
-      font-size: 1.125rem;
-      margin-left: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+    .over_line {
+      h2 {
+        color: white;
+        text-align: left;
+        font-size: 1.125rem;
+        margin-left: 12px;
+      }
+      & > button {
+        margin: 1.5rem 0.75rem 1.5rem 0.75rem;
+        cursor: pointer;
+      }
     }
-    & > button {
-      margin: 2.25rem 0.75rem 2.25rem 0.75rem;
-      cursor: pointer;
-    }
-
     .Bottom_Btns {
-      margin-top: 1.5rem;
       margin-inline: 0.5rem;
       display: flex;
       gap: 0.75rem;
-      // flex-direction: column;
       border-top: 2px solid rgba(255, 255, 255, 0.2);
       justify-content: start;
-      margin-top: auto;
+      // margin-bottom: 2rem;
       padding-top: 32px;
     }
   }
