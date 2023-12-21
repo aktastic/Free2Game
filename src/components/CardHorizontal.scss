@@ -7,7 +7,7 @@
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
   }
-  & > div {
+  .title_buttons {
     margin-top: 2rem;
     margin-bottom: 2rem;
     margin-inline: 8%;
@@ -20,12 +20,10 @@
       gap: 0.75rem;
     }
   }
-  svg {
+  .top_icon {
     position: absolute;
-    top: 0;
+    top: 1rem;
     left: 1rem;
-    fill: var(--highlight);
-    opacity: 0.8;
   }
 }
 

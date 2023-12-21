@@ -2,6 +2,7 @@
   position: relative;
   height: 70vh;
   width: 100%;
+  overflow: hidden;
 
   img {
     margin-top: 78px;
@@ -20,4 +21,7 @@
     color: var(--text-title);
     text-transform: uppercase;
   }
+}
+.allgimg{
+  border-radius: 24px;
 }
