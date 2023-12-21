@@ -2,9 +2,12 @@ import "./Menu.scss";
 import hamburger from "../img/Burger-Icon.svg";
 import homeIcon from "../img/Home.svg";
 import addIcon from "../img/Recently-Added.svg";
+import logowhite from "../img/logowhite.png";
 import logoIcon from "../img/logo.svg";
+import logoWide from "../img/logowide.png";
+import logoNew from "../img/logonew.png";
 import gamesIcon from "../img/Games.png"
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 
 const MenuNew = () => {
@@ -17,7 +20,7 @@ const MenuNew = () => {
   // sidebar
   const [sidebar, setSidebar] = useState(false);
 
-  // Bei Klick auf Hamburger-Icon öffnet sich die Sidebar + das Hamburger-Icon verschwindet + das Close-Icon erscheint
+  // Sidebar ausklappen & Close-Icon erscheint
   const openHamburgerMenu = () => {
     setHamburgerNotClicked((hamburgerIsNotClicked) => !hamburgerIsNotClicked);
     console.log("Hamburger State ist: ", hamburgerNotClicked);
@@ -26,7 +29,7 @@ const MenuNew = () => {
     console.log("Close State ist: ", closeIconVisible);
   };
 
-  // Bei Klick auf das Close-Icon schließt sich die Sidebar + das Close-Icon verschwindet + das Hamburger-Icon erscheint
+  // Sidebar schließen & Hamburger-Icon erscheint
   const closeHamburgerMenu = () => {
     setHamburgerNotClicked((hamburgerIsNotClicked) => !hamburgerIsNotClicked);
     console.log("Hamburger State ist: ", hamburgerNotClicked);
@@ -35,17 +38,31 @@ const MenuNew = () => {
     console.log("Close State ist: ", closeIconVisible);
   };
 
+  // für Logo- & Companyname-Link: Bei Klick auf Link, scrollt die Home-Page automatisch nach oben
+  const scrollToTop = () => {
+    window.scroll({
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth'
+    });
+  }
+
   return (
     <>
       {/* Logo + Companyname */}
-      <div
-        className={
-          hamburgerNotClicked ? "main-content-close" : "main-content-side"
-        }
-      >
-        <img src={logoIcon} alt="Platzhalter Logo" />
-        <h3>FREE2GAME</h3>
-      </div>
+      <Link to="/" className="link_to_home" onClick={scrollToTop}>
+        <div
+          className={
+            hamburgerNotClicked ? "main-content-close" :  "main-content-side"
+          }
+        >
+          {/* <img src={logoIcon} alt="Platzhalter Logo" /> */}
+          {/* <img src={logoNew} alt="Platzhalter Logo" /> */}
+          <img src={logoWide} alt="Platzhalter Logo" />
+          {/* <img src={logowhite} alt="Platzhalter Logo" /> */}
+          {/* <h3>FREE2GAME</h3> */}
+        </div>
+      </Link>
 
       {/* Menu Sidebar */}
       <aside
