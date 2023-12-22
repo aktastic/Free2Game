@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  // transition: all 0.4s ease;
+  transition: all 0.4s ease;
   z-index: 1100;
 
   // Icons: Hamburger + Close
@@ -29,6 +29,7 @@
   nav {
     margin-block: 30vh;
     padding: 8px 12px;
+    position: relative;
 
     ul {
       li {
@@ -40,12 +41,6 @@
           display: flex;
           align-items: center;
           gap: 10px;
-
-          // Icon-Titel (Home, All Games, Recently Added)
-          .nav-item-invisible {
-            display: none;
-            flex-grow: 1;
-          }
         }
 
         .active {
@@ -82,6 +77,11 @@
         // }
       }
     }
+    // Companyname + Page-Namen (Home, All Games, Recently Added)
+    .nav-item-invisible {
+      display: none;
+      flex-grow: 1;
+    }
     // }
   }
 }
@@ -101,7 +101,35 @@
     color: white;
     font-size: 1.5rem;
     flex-grow: 1;
+
+    // Companyname - erscheint, wenn Sidebar open
+    // h3 {
+    //   text-align: center;
+    //   font-size: 2rem;
+    //   span {
+    //     color: var(--highlight);
+    //   }
+    // }
   }
+
+  .company {
+    position: absolute;
+    left: 50px;
+    top: -210px;
+
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+
+      span {
+        color: var(--highlight);
+      }
+    }
+  }
+
+  // li:nth-of-type(1) {
+  //   margin-bottom: 5rem;
+  // }
 }
 
 // X - Close-Icon erscheint
@@ -126,7 +154,7 @@
   z-index: 1001;
   cursor: pointer;
 
-  // Container für Logo + Companyname bei ausgeklapptem Menü
+  // Container für Logo
   .main-content-side {
     display: flex;
     justify-content: flex-start;
@@ -140,23 +168,23 @@
 
     // Logo
     img {
+      width: 140px;
       position: fixed;
-      top: 16px;
-      left: 270px;
-      // transition: all 0.4s ease;
+      top: 20px;
+      left: 300px;
+      transition: all 0.4s ease;
       padding: 8px 20px;
     }
-    // Companyname
-    h2 {
-      padding: 8px 20px;
-      position: fixed;
-      top: 12px;
-      left: 323px;
-      // transition: all 0.4s ease;
-
-      // Höhe = Höhe vom img
-      height: 40px;
-    }
+    // // Companyname
+    // h2 {
+    //   padding: 8px 20px;
+    //   position: fixed;
+    //   top: 12px;
+    //   left: 323px;
+    //   // transition: all 0.4s ease;
+    //   // Höhe = Höhe vom img
+    //   height: 40px;
+    // }
   }
 
   // Container für Logo + Companyname bei gesschlossenem Menü
@@ -168,25 +196,24 @@
     position: absolute;
     left: 120px;
     top: 24px;
-    // transition: all 0.4s ease;
     z-index: 993;
 
     img {
-      padding: 8px 20px;
-      // height: 43px;
-      position: fixed;
-      top: 16px;
-      left: 90px;
-      // transition: all 0.4s ease;
-    }
-    h2 {
+      width: 140px;
       padding: 8px 20px;
       position: fixed;
-      top: 12px;
-      left: 143px;
-      // transition: all 0.4s ease;
-      // Höhe = Höhe vom img
-      height: 40px;
+      top: 20px;
+      left: 120px;
+      transition: all 0.4s ease;
     }
+    // h2 {
+    //   padding: 8px 20px;
+    //   position: fixed;
+    //   top: 12px;
+    //   left: 193px;
+
+    //   // Höhe = Höhe vom img
+    //   height: 40px;
+    // }
   }
 }
