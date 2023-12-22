@@ -22,19 +22,19 @@ const MenuNew = (props) => {
   // Sidebar ausklappen & Close-Icon erscheint
   const openHamburgerMenu = () => {
     setHamburgerNotClicked((hamburgerIsNotClicked) => !hamburgerIsNotClicked);
-    console.log("Hamburger State ist: ", hamburgerNotClicked);
+    
 
     setCloseIconVisible((closeIconHidden) => !closeIconHidden);
-    console.log("Close State ist: ", closeIconVisible);
+    
   };
 
   // Sidebar schließen & Hamburger-Icon erscheint
   const closeHamburgerMenu = () => {
     setHamburgerNotClicked((hamburgerIsNotClicked) => !hamburgerIsNotClicked);
-    console.log("Hamburger State ist: ", hamburgerNotClicked);
+    
 
     setCloseIconVisible((closeIconHidden) => !closeIconHidden);
-    console.log("Close State ist: ", closeIconVisible);
+    
   };
 
   // für Logo- & Companyname-Link: Bei Klick auf Link, scrollt die Home-Page automatisch nach oben

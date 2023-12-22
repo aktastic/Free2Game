@@ -19,6 +19,8 @@ import TopIcon from "../components/TopIcon";
 import "./Home.scss";
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
+
+
   const [top1GameInPc, setTop1GameInPc] = useState({});
   const navigate = useNavigate();
   const gameFilter = (searchInput) => {
@@ -62,7 +64,7 @@ const Home = () => {
         .then((game) => setTop1GameInPc(game));
     }
   }, [top1InPcID]);
-  console.log(recentlyAddedGames);
+  
   return (
     <>
       <Nav searchFunc={gameFilter} btnShow={true} />
