@@ -5,7 +5,7 @@ import { PopularityContext } from "../context/FetchContext";
 
 import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
 import Card from "../components/Card";
@@ -19,7 +19,6 @@ import TopIcon from "../components/TopIcon";
 import "./Home.scss";
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
-
 
   const [top1GameInPc, setTop1GameInPc] = useState({});
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  console.log(allGames);
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -
@@ -64,7 +63,7 @@ const Home = () => {
         .then((game) => setTop1GameInPc(game));
     }
   }, [top1InPcID]);
-  
+
   return (
     <>
       <Nav searchFunc={gameFilter} btnShow={true} />
