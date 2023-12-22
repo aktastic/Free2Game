@@ -108,9 +108,11 @@ const AllGames = () => {
 
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
+    window.scrollTo(0, 0);
   };
   const handlePrevClick = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - itemsPerPage));
+    window.scrollTo(0, 0);
   };
 
   console.log(allGames);
