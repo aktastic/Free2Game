@@ -10,6 +10,7 @@ const FetchRelevance = () => {
       .then((json) => {
         setRelevanceGames(json);
       });
+      console.log(relevanceGames)
   }, []);
   
 };

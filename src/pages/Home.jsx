@@ -66,93 +66,72 @@ const Home = () => {
 
   return (
     <>
-      <Nav searchFunc={gameFilter} btnShow={true} />
-      <section className="HomePage">
-        <HeaderBanner
-          url="https://media.discordapp.net/attachments/1186291209308741684/1186332027457392710/Gruppenbild.jpg?ex=6592dccc&is=658067cc&hm=9d3c25cca16df8ee336ac05851db8ecb20752037c35b49b77e3d85f6b3ad71f8&=&format=webp&width=1588&height=794"
-          title="Find & track the best free-to-play games!"
-        />
-        <main>
-          <section className="recentlyAdded">
-            <h2>Recently Added</h2>
-            <div className="grid_layout">
-              {recentlyAddedGames?.map((game) => (
-                <Card
-                  key={game.id}
-                  id={game.id}
-                  thumbnail={game.thumbnail}
-                  title={game.title}
-                  genre={game.genre}
-                  platform={game.platform}
-                  svg={game.platform === "PC (Windows)" ? Vector : Group}
-                  description={game.short_description}
-                />
-              ))}
-            </div>
-            <ButtonFilled
-              navigateFunc={() => navigate("/recentlyadded")}
-              name="SHOW MORE"
-            />
-          </section>
-          <section className="topForPC">
-            <h2>Top 4 Games for PC in June 2021</h2>
-            <div className="topForPcCards">
-              <div className="card_vertical_PC">
-                <img
-                  src={
-                    top1GameInPc.screenshots
-                      ? top1GameInPc.screenshots[0].image
-                      : popularGamesInPC[0]?.thumbnail
-                  }
-                  alt={top1GameInPc.title}
-                />
-                <TopIcon name="1" />
-                <div className="over_image">
-                  <h2>{popularGamesInPC[0]?.title}</h2>
+    <Nav searchFunc={gameFilter} btnShow={true}/>
+    <section className="HomePage">
+      <HeaderBanner
+        url="https://media.discordapp.net/attachments/1186291209308741684/1186332027457392710/Gruppenbild.jpg?ex=6592dccc&is=658067cc&hm=9d3c25cca16df8ee336ac05851db8ecb20752037c35b49b77e3d85f6b3ad71f8&=&format=webp&width=1588&height=794"
+        title="Find & track the best free-to-play games!"
+      />
+      <main>
+        <section className="recentlyAdded">
+          <h2>Recently Added</h2>
+          <div className="grid_layout">
+            {recentlyAddedGames?.map((game) => (
+              <Card
+                key={game.id}
+                id={game.id}
+                thumbnail={game.thumbnail}
+                title={game.title}
+                genre={game.genre}
+                platform={game.platform}
+                svg={game.platform === "PC (Windows)" ? Vector : Group}
+                description={game.short_description}
+              />
+            ))}
+          </div>
+          <ButtonFilled navigateFunc={()=>navigate('/recentlyadded')} name="SHOW MORE" />
+        </section>
+        <section className="topForPC">
+          <h2>Top 4 Games for PC in December 2023</h2>
+          <div className="topForPcCards">
+            <div className="card_vertical_PC">
+              <img
+                src={
+                  top1GameInPc.screenshots
+                    ? top1GameInPc.screenshots[0].image
+                    : popularGamesInPC[0]?.thumbnail
+                }
+                alt={top1GameInPc.title}
+              />
+              <TopIcon name="1" />
+              <div className="over_image">
+                <h2>{popularGamesInPC[0]?.title}</h2>
 
                   <Link to={`/details/${popularGamesInPC[0]?.id}`}>
                     <ButtonFilled name="READ MORE" />
                   </Link>
 
-                  <div className="outline_buttons">
-                    <ButtonOutline
-                      name={
-                        <img
-                          src={
-                            popularGamesInPC[0]?.platform === "PC (Windows)"
-                              ? Group
-                              : Vector
-                          }
-                        />
-                      }
-                    />
-                    <ButtonOutline name={popularGamesInPC[0]?.genre} />
-                  </div>
+                <div className="outline_buttons">
+                  <ButtonOutline
+                    name={
+                      <img
+                        src={
+                          popularGamesInPC[0]?.platform === "PC (Windows)"
+                            ? Group
+                            : Vector
+                        }
+                      />
+                    }
+                  />
+                  <ButtonOutline name={popularGamesInPC[0]?.genre} />
                 </div>
               </div>
-              <div className="horizontal_cards">
-                {top2_4InPc?.map((game, index) => (
-                  <CardHorizontal
-                    key={index}
-                    icon={<TopIcon name={index + 2} />}
-                    id={game.id}
-                    thumbnail={game.thumbnail}
-                    title={game.title}
-                    genre={game.genre}
-                    platform={game.platform}
-                    svg={game.platform === "PC (Windows)" ? Vector : Group}
-                  />
-                ))}
-              </div>
             </div>
-            <ButtonFilled navigateFunc={navigatePcTop} name="SHOW MORE" />
-          </section>
-          <section className="topForBrowser">
-            <h2>Top 4 Games for Browser in June 2021</h2>
-            <div className="grid_layout">
-              {top4InBrowser?.map((game, index) => (
-                <Card
+            <div className="horizontal_cards">
+              {top2_4InPc?.map((game, index) => (
+                <CardHorizontal
                   key={index}
+                  icon={<TopIcon name={index + 2} />}
                   id={game.id}
                   thumbnail={game.thumbnail}
                   title={game.title}
@@ -162,9 +141,27 @@ const Home = () => {
                 />
               ))}
             </div>
-            <ButtonFilled navigateFunc={navigateBrowserTop} name="SHOW MORE" />
-          </section>
-        </main>
+          </div>
+          <ButtonFilled navigateFunc={navigatePcTop} name="SHOW MORE" />
+        </section>
+        <section className="topForBrowser">
+          <h2>Top 4 Games for Browser in December 2023</h2>
+          <div className="grid_layout">
+            {top4InBrowser?.map((game, index) => (
+              <Card
+                key={index}
+                id={game.id}
+                thumbnail={game.thumbnail}
+                title={game.title}
+                genre={game.genre}
+                platform={game.platform}
+                svg={game.platform === "PC (Windows)" ? Vector : Group}
+              />
+            ))}
+          </div>
+          <ButtonFilled navigateFunc={navigateBrowserTop} name="SHOW MORE" />
+        </section>
+      </main>
 
         {/* <Footer /> */}
       </section>

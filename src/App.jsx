@@ -13,7 +13,7 @@ import RecentlyAdded from "./pages/RecentlyAdded";
 import FetchAllGames from "./data/FetchAllGames";
 import FetchPopularity from "./data/FetchPopularity";
 import FetchRelevance from "./data/FetchRelevance";
-import FetchDetails from "./data/FetchDetails";
+
 
 import Nav from "./components/Nav";
 import Menu from "./components/Menu";

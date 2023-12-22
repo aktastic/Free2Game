@@ -13,6 +13,7 @@ const FetchPopularity = () => {
       .catch((err) => {
         console.error(err);
       });
+      console.log(popularityGames)
   }, []);
   
 };

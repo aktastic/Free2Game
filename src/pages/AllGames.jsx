@@ -73,55 +73,46 @@ const AllGames = () => {
       } else {
         let filteredData = [...popularityGames];
         if (selectedFilters.filter1) {
-          filteredData = filteredData.filter(
-            (game) => game.platform === selectedFilters.filter1
-          );
+        filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
+      } 
+    
+      if (selectedFilters.filter2) {
+        filteredData = filteredData.filter((game) => game.genre === selectedFilters.filter2);
+      }setMapData(filteredData);
+      setFilterData(filteredData)
+    }
+      
+    }
+      if (!isInitialized) {
+        setIsInitialized(true);
+  
+        if (stateUse === 'PC (Windows)' || stateUse === 'Web Browser') {
+          const filtered = popularityGames.filter((game) => game.platform === stateUse)
+          
+          setMapData(filtered)
+          window.scrollTo(0,400)
+          setSelectedSort('popularity');
+          setSelectedFilters({
+            filter1: stateUse,
+            filter2: null,
+          });
+          
+        } else if (stateUse !== null) {
+          setMapData(stateUse);
+          setFilterData(stateUse);
+        } else {
+          filterAndSort();
         }
-
-        if (selectedFilters.filter2) {
-          filteredData = filteredData.filter(
-            (game) => game.genre === selectedFilters.filter2
-          );
-        }
-        setMapData(filteredData);
-        setFilterData(filteredData);
-      }
-    };
-    if (!isInitialized) {
-      setIsInitialized(true);
-
-      if (stateUse === "PC (Windows)" || stateUse === "Web Browser") {
-        const filtered = popularityGames.filter(
-          (game) => game.platform === stateUse
-        );
-
-        setMapData(filtered);
-
-        setSelectedSort("popularity");
-        setSelectedFilters({
-          filter1: stateUse,
-          filter2: null,
-        });
-      } else if (stateUse !== null) {
+      }else if (Array.isArray(stateUse)) {
         setMapData(stateUse);
         setFilterData(stateUse);
       } else {
         filterAndSort();
       }
-    } else if (Array.isArray(stateUse)) {
-      setMapData(stateUse);
-      setFilterData(stateUse);
-    } else {
-      filterAndSort();
-    }
-  }, [
-    selectedSort,
-    popularityGames,
-    selectedFilters,
-    relevanceGames,
-    stateUse,
-    isInitialized,
-  ]);
+      
+      
+  },[ selectedSort , popularityGames, selectedFilters, relevanceGames, stateUse, isInitialized])
+
 
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
@@ -262,16 +253,16 @@ const AllGames = () => {
                   platform={game.platform}
                   svg={game.platform === "PC (Windows)" ? Vector : Group}
                   filterfunc2={(e) => {
-                    handleFilter("filter2", e.target.textContent);
+                    window.scrollTo(0,400),handleFilter("filter2", e.target.textContent);
                   }}
                   filterfunc1={() => {
-                    handleFilter("filter1", `${game.platform}`);
+                    window.scrollTo(0,400),handleFilter("filter1", `${game.platform}`);
                   }}
                   filterfunc3={() => {
-                    handleFilter("filter1", "PC (Windows)");
+                    window.scrollTo(0,400),handleFilter("filter1", "PC (Windows)");
                   }}
                   filterfunc4={() => {
-                    handleFilter("filter1", "Web Browser");
+                    window.scrollTo(0,400),handleFilter("filter1", "Web Browser");
                   }}
                 />
               ))}
