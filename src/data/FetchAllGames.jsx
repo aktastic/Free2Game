@@ -11,7 +11,6 @@ const FetchAllGames = () => {
         setAllGames(json);
       });
   }, []);
-  
 };
 
 export default FetchAllGames;

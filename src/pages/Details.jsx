@@ -3,24 +3,21 @@ import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import "./Details.scss";
 import { useParams } from "react-router-dom";
-import HeaderBanner from "../components/HeaderBanner";
+// import HeaderBanner from "../components/HeaderBanner";
 import HeaderAllGame from "../components/HeaderAllGame";
 
 const Details = () => {
   const { id } = useParams();
   const [detailsOFGame, setDetailsOfGame] = useState();
 
-  
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     fetch(`https://www.freetogame.com/api/game?id=${id}`)
       .then((res) => res.json())
       .then((game) => setDetailsOfGame(game));
   }, [id]);
-
-  
 
   return (
     <>
