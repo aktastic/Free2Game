@@ -16,7 +16,8 @@
 .recentlyAdded__Wrapper {
   margin-top: 5%;
   display: flex;
-  padding-left: 100px;
+  margin-left: 5rem;
+  // padding-inline: 1rem;
   justify-content: space-between;
 
   .cardsContainer {
@@ -30,11 +31,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    img {
-      cursor: pointer;
-      background: #375470;
-      border: 2px solid #ff4654;
+    cursor: pointer;
+    svg {
+      width: 3rem;
+      fill: var(--primary);
+      stroke-width: 2px;
+      stroke: var(--highlight);
+      stroke-linecap: round;
+      stroke-linejoin: round;
       border-radius: 50px;
       &:nth-of-type(1) {
         margin-inline: 12px;

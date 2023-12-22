@@ -1,23 +1,21 @@
-.filterdiv{
-    display: flex;
-    gap: 3%;
-    padding: 3%;
+.filterdiv {
+  display: flex;
+  gap: 3%;
+  //   padding-top: 3%;
 }
 
-.filterdiv select{
-    padding-block: 12px;
-    padding-inline: 24px;
-    font-family: 'Oswald';
-    font-size: 18px;
-    background-color: var(--highlight);
-    border-radius: 12px;
-    color: var(--text-title);
-    width: 25%;
-    cursor: pointer;
+.filterdiv select {
+  padding-block: 12px;
+  padding-inline: 24px;
+  font-family: "Oswald";
+  font-size: 18px;
+  background-color: var(--highlight);
+  border-radius: 12px;
+  color: var(--text-title);
+  width: 25%;
+  cursor: pointer;
 }
 
-.filterdiv select:hover{
-    border: 3px solid #afc7df;
+.filterdiv select:hover {
+  border: 3px solid #afc7df;
 }
-
-

@@ -6,12 +6,12 @@ import { AllGamesContext, PopularityContext } from "../context/FetchContext";
 import Card from "../components/Card";
 import HeaderAllGame from "../components/HeaderAllGame";
 import "./AllGames.scss";
-// import { FaTimes } from 'react-icons/fa';
+import { FaTimes } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-import ArrowRight from "../img/arrow-right.png";
-import ArrowLeft from "../img/arrow-left.png";
+// import Footer from "../components/Footer";
+// import ArrowRight from "../img/arrow-right.png";
+// import ArrowLeft from "../img/arrow-left.png";
 
 const AllGames = () => {
   const { allGames, setAllGanes } = useContext(AllGamesContext);
@@ -120,56 +120,63 @@ const AllGames = () => {
       <Nav searchFunc={gameFilter} btnShow={false} />
       <section className="AllGamePage">
         <HeaderAllGame />
-        <FilterBar
-          sortfunc={(e) => handleSort(e.target.value)}
-          filterfunc1={(e) => {
-            handleFilter("filter1", e.target.value);
-          }}
-          filterfunc2={(e) => {
-            handleFilter("filter2", e.target.value);
-          }}
-          btn={
-            stateUse !== null ? (
-              <button className="btnAll" onClick={() => setStateuse(null)}>
-                SHOW ALL GAMES
-              </button>
-            ) : null
-          }
-        />
+        <div className="filter_part">
+          <FilterBar
+            sortfunc={(e) => handleSort(e.target.value)}
+            filterfunc1={(e) => {
+              handleFilter("filter1", e.target.value);
+            }}
+            filterfunc2={(e) => {
+              handleFilter("filter2", e.target.value);
+            }}
+            btn={
+              stateUse !== null ? (
+                <button className="btnAll" onClick={() => setStateuse(null)}>
+                  SHOW ALL GAMES
+                </button>
+              ) : null
+            }
+          />
 
-        <div className="filterselectwrapper">
-          <ul>
-            {selectedFilters.filter1 ? (
-              <li>
-                <p className="xbtn" onClick={() => removeFilter("filter1")}>
-                  <FaTimes />
-                </p>
-                <p>{selectedFilters.filter1}</p>
-              </li>
-            ) : null}
+          <div className="filterselectwrapper">
+            <ul>
+              {selectedFilters.filter1 ? (
+                <li>
+                  <p className="xbtn" onClick={() => removeFilter("filter1")}>
+                    <FaTimes />
+                  </p>
+                  <p>{selectedFilters.filter1}</p>
+                </li>
+              ) : null}
 
-            {selectedFilters.filter2 ? (
-              <li>
-                <p className="xbtn" onClick={() => removeFilter("filter2")}>
-                  <FaTimes />
-                </p>
-                <p>{selectedFilters.filter2}</p>
-              </li>
-            ) : null}
+              {selectedFilters.filter2 ? (
+                <li>
+                  <p className="xbtn" onClick={() => removeFilter("filter2")}>
+                    <FaTimes />
+                  </p>
+                  <p>{selectedFilters.filter2}</p>
+                </li>
+              ) : null}
 
-            {selectedSort ? (
-              <li>
-                <p className="xbtn" onClick={removeSort}>
-                  <FaTimes />
-                </p>
-                <p>{selectedSort}</p>
-              </li>
-            ) : null}
-          </ul>
+              {selectedSort ? (
+                <li>
+                  <p className="xbtn" onClick={removeSort}>
+                    <FaTimes />
+                  </p>
+                  <p>{selectedSort}</p>
+                </li>
+              ) : null}
+            </ul>
+          </div>
         </div>
         <section className="cardWrapper">
-          <div className="btn_Navigation">
-            <img src={ArrowLeft} alt="" onClick={handlePrevClick} />
+          <div onClick={handlePrevClick} className="btn_Navigation">
+            <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8407">
+              <path
+                d="M12.4204,1.5l-10.9204,10.9204l10.9204,10.9203"
+                data-paper-data='{"rotation":135}'
+              ></path>
+            </svg>
           </div>
           <div className="mapWrap">
             {mapData
@@ -200,8 +207,14 @@ const AllGames = () => {
               ))}
             {mapData?.length <= 0 ? <h1>No Game Was Found</h1> : null}
           </div>
-          <div className="btn_Navigation">
-            <img src={ArrowRight} alt="" onClick={handleNextClick} />
+
+          <div className="btn_Navigation" onClick={handleNextClick}>
+            <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
+              <path
+                d="M1.5,1.5l10.9204,10.9204l-10.9204,10.9204"
+                data-paper-data='{"rotation":45}'
+              ></path>
+            </svg>
           </div>
         </section>
       </section>
