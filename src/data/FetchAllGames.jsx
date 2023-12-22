@@ -11,7 +11,6 @@ const FetchAllGames = () => {
         setAllGames(json);
       });
   }, []);
-  console.log(allGames);
 };
 
 export default FetchAllGames;

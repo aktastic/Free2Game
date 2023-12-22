@@ -32,7 +32,7 @@ const FetchDetails = () => {
     });
   }, []);
 
-  console.log(detailsOfGames);
+  
 };
 
 export default FetchDetails;
