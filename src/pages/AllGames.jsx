@@ -115,28 +115,15 @@ const AllGames = () => {
   console.log(selectedFilters);
   console.log(selectedSort);
 
+  
   return (
     <>
-      <Nav searchFunc={gameFilter} btnShow={false} />
-      <section className="AllGamePage">
-        <HeaderAllGame />
-        <div className="filter_part">
-          <FilterBar
-            sortfunc={(e) => handleSort(e.target.value)}
-            filterfunc1={(e) => {
-              handleFilter("filter1", e.target.value);
-            }}
-            filterfunc2={(e) => {
-              handleFilter("filter2", e.target.value);
-            }}
-            btn={
-              stateUse !== null ? (
-                <button className="btnAll" onClick={() => setStateuse(null)}>
-                  SHOW ALL GAMES
-                </button>
-              ) : null
-            }
-          />
+
+    <Nav searchFunc={gameFilter}
+    btnShow={false}/>
+    <section className="AllGamePage">
+      <HeaderAllGame url="https://s3-alpha-sig.figma.com/img/d101/1476/f3a08a9fe47f06e171e4ab204a6fcad0?Expires=1704067200&Signature=ohrac7d~u~NsLhLGDzlVlnPL2SqNfUy7CIH-81IimDC8lY4Ehl-UwfEFIYL5cmUmxECoANDByrXkeKZZEh5S~HQQE-IpcgFM4BgWaNkp9cPu5VzdDST5b1x1Uh1m6MFwowZjc3cOvQZFcNdwRHS28YIbEamiJF621CRYqePhx78mSzsuuQ6d7ReDKE2xNmGuEYSuIO34PvFUDau-7vxtB0AfLyfISh~Grc01IiDnrxLc-RA5HrLAWhuiu40u5OKV6U1tbtugckJoS15eqdJ3pPZvW6OasgewCPqg28vE9ejXXpgZb7atEgNCA~OMbqXSU7VyHbDby0WKctdHJ2fw2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" title="All Games"/>
+    <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={stateUse!==null ? <button className="btnAll" onClick={()=>setStateuse(null)}>SHOW ALL GAMES</button>:null}/>
 
           <div className="filterselectwrapper">
             <ul>

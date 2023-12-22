@@ -29,12 +29,6 @@ const Home = () => {
     navigate('/allgames', {state: filtered})
   }
 
-
-
-
-  
-
-
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -

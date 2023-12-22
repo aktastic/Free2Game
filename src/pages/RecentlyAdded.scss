@@ -1,16 +1,5 @@
-.heroImg {
-  position: relative;
-  background-image: url(../img/LoL-Banner.png);
-  height: 70vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  p {
-    font-size: 4rem;
-    position: absolute;
-    bottom: 100px;
-    left: 200px;
-  }
+.recently_added_page {
+  margin-inline: 110px 24px;
 }
 
 .recentlyAdded__Wrapper {
@@ -28,9 +17,13 @@
   }
 
   .btn_Navigation {
+    padding: 20px 0 25px 12px;
+    width: 3.2rem;
+    height: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     cursor: pointer;
     svg {
       width: 3rem;
@@ -44,5 +37,6 @@
         margin-inline: 12px;
       }
     }
+
   }
 }
