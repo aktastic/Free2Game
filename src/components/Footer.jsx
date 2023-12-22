@@ -18,10 +18,18 @@ const Footer = () => {
             2023 by
           </p>
           <div className="githubLinks">
-            <a href="https://github.com/MoniqueHeusinger">Monique</a>
-            <a href="https://github.com/aktastic">Arif</a>
-            <a href="https://github.com/trisi99">Tristan</a>
-            <a href="https://github.com/huangrunhong">Runhong</a>
+            <a href="https://github.com/MoniqueHeusinger" target="_blank">
+              Monique
+            </a>
+            <a href="https://github.com/aktastic" target="_blank">
+              Arif
+            </a>
+            <a href="https://github.com/trisi99" target="_blank">
+              Tristan
+            </a>
+            <a href="https://github.com/huangrunhong" target="_blank">
+              Runhong
+            </a>
           </div>
         </div>
         <a href="#top" className={backToTopVisiable ? "backToTop" : "hidden"}>
