@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import FilterBar from "../components/filterbar/FilterBar";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
-import { AllGamesContext, PopularityContext } from "../context/FetchContext";
+import { AllGamesContext, PopularityContext, RelevanceContext } from "../context/FetchContext";
 import Card from "../components/Card";
 import HeaderAllGame from "../components/HeaderAllGame";
 import "./AllGames.scss";
@@ -16,6 +16,7 @@ import Soldier from "../img/noGameFound.png"
 
 const AllGames = () => {
   const { allGames, setAllGanes } = useContext(AllGamesContext);
+  const { relevanceGames, setRelevanceGames } = useContext(RelevanceContext)
   const { popularityGames, setPopularityGames } = useContext(PopularityContext);
   const [selectedFilters, setSelectedFilters] = useState({
     filter1: null,
@@ -26,7 +27,7 @@ const AllGames = () => {
 
   const itemsPerPage = 12;
   const [filterData, setFilterData] = useState([])
-  const [mapData, setMapData] = useState(allGames)
+  const [mapData, setMapData] = useState(relevanceGames)
   const location = useLocation()
   const state = location.state
   
@@ -43,7 +44,7 @@ const AllGames = () => {
     
     const filterAndSort = ()=>{
       if (selectedSort !== 'popularity'){
-        let filteredData = [...allGames];
+        let filteredData = [...relevanceGames];
     
       if (selectedFilters.filter1) {
         filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
@@ -102,7 +103,7 @@ const AllGames = () => {
       }
       
       
-  },[ selectedSort , popularityGames, selectedFilters, allGames, stateUse, isInitialized])
+  },[ selectedSort , popularityGames, selectedFilters, relevanceGames, stateUse, isInitialized])
 
 
   const handleNextClick = () => {
@@ -156,7 +157,7 @@ const AllGames = () => {
           title="All Games"
         />
         <div className="filter_part">
-         <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={mapData.length<=0 || stateUse!== null ? <button className="btnAll" onClick={()=>{setMapData(allGames);setStateuse(null)}}>SHOW ALL GAMES</button>:null}/>
+         <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={mapData.length<=0 || stateUse!== null ? <button className="btnAll" onClick={()=>{setMapData(relevanceGames);setStateuse(null)}}>SHOW ALL GAMES</button>:null}/>
 
 
           <div className="filterselectwrapper">
@@ -213,7 +214,7 @@ const AllGames = () => {
         filterfunc3={()=>{handleFilter('filter1',"PC (Windows)")}}
         filterfunc4={()=>{handleFilter('filter1',"Web Browser")}}
         />)}
-        { mapData?.length<=0 ? <div className="imgcontainer"><img onClick={()=>{setMapData(allGames);setStateuse(null)}} className="soldierimg" src={Soldier} alt="Soldier with No Game Found Shield"/></div> : null}
+        { mapData?.length<=0 ? <div className="imgcontainer"><img onClick={()=>{setMapData(relevanceGames);setStateuse(null)}} className="soldierimg" src={Soldier} alt="Soldier with No Game Found Shield"/></div> : null}
         
         {mapData.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation" onClick={handleNextClick}>
             <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">

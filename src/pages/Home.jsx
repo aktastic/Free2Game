@@ -20,6 +20,7 @@ import TopIcon from "../components/TopIcon";
 import "./Home.scss";
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
+  const [sortGame, setSortGame] = useState(allGames)
   const [top1GameInPc, setTop1GameInPc] = useState({});
   const navigate = useNavigate()
   const gameFilter = (searchInput) =>{
@@ -41,7 +42,7 @@ const Home = () => {
   },[])
   
 
-  const GamesSortByDate = allGames.sort(
+  const GamesSortByDate = sortGame.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -
       new Date(game1.release_date).getTime()
