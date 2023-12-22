@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card from "../components/Card";
 import { AllGamesContext } from "../context/FetchContext";
 import "./RecentlyAdded.scss";
@@ -13,6 +13,10 @@ const RecentlyAdded = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 12;
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -
