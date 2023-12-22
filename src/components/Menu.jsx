@@ -2,9 +2,8 @@ import "./Menu.scss";
 import hamburger from "../img/Burger-Icon.svg";
 import homeIcon from "../img/Home.svg";
 import addIcon from "../img/Recently-Added.svg";
-import logoIcon from "../img/logo.svg";
-import gamesIcon from "../img/Games.png"
-
+import gamesIcon from "../img/Games.png";
+import logofinal from "../img/logofinal.png";
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import moon from "../img/moon.png";
@@ -57,9 +56,9 @@ const MenuNew = (props) => {
           }
         >
           {/* Logo */}
-          <img src={logoIcon} alt="Platzhalter Logo" />
+          <img src={logofinal} alt="Platzhalter Logo" />
           {/* Companyname */}
-          <h2>FREE2GAME</h2>
+          {/* <h2>FREE2GAME</h2> */}
         </div>
       </Link>
 
@@ -88,7 +87,27 @@ const MenuNew = (props) => {
         </div>
 
         <nav>
+          {/* Companyname */}
+          <span
+                  className={
+                    hamburgerNotClicked
+                      ? "nav-item-invisible company"
+                      : "nav-item-visible company"
+                  }
+                ><h3>FREE<span>2</span>GAME</h3></span>
+
           <ul>
+            {/* <li> */}
+              {/* Companyname */}
+              {/* <span
+                  className={
+                    hamburgerNotClicked
+                      ? "nav-item-invisible"
+                      : "nav-item-visible"
+                  }
+                ><h3>FREE<span>2</span>GAME</h3></span>
+            </li> */}
+
             {/* Home */}
             <li>
               <NavLink to="/">
