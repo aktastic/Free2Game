@@ -12,6 +12,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ArrowRight from "../img/arrow-right.png";
 import ArrowLeft from "../img/arrow-left.png";
+import Soldier from "../img/noGameFound.png"
 
 const AllGames = () => {
   const { allGames, setAllGanes } = useContext(AllGamesContext);
@@ -22,53 +23,85 @@ const AllGames = () => {
   });
   const [selectedSort, setSelectedSort] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 40;
+  const itemsPerPage = 12;
   const [filterData, setFilterData] = useState([])
   const [mapData, setMapData] = useState(allGames)
   const location = useLocation()
   const state = location.state
   
-  
+  const [isInitialized, setIsInitialized] = useState(false);
   const [stateUse, setStateuse]=useState(state)
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   
   
 
   useEffect(()=>{
     
     
-      const filterAndSort = ()=>{
+    const filterAndSort = ()=>{
+      if (selectedSort !== 'popularity'){
         let filteredData = [...allGames];
-
-        if (selectedFilters.filter1) {
-          filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
-        } if(selectedFilters.filter1 === 'Web Browser'){
-          filteredData = filteredData.filter((game) => game.platform.includes(selectedFilters.filter1) )
-        }
-
-        if (selectedFilters.filter2) {
-          filteredData = filteredData.filter((game) => game.genre === selectedFilters.filter2);
-        }
-        if (selectedSort === 'popularity') {
-          filteredData = popularityGames;
-        } else if (selectedSort === 'alphabetical') {
-          filteredData = filteredData.sort((a, b) => a.title.localeCompare(b.title));
-        } else if (selectedSort === 'Release(desc)') {
-          filteredData = filteredData.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
-        } else if (selectedSort === 'Release(asc)') {
-          filteredData = filteredData.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
-        }
-        setMapData(filteredData);
-        setFilterData(filteredData)
+    
+      if (selectedFilters.filter1) {
+        filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
+      } 
+    
+      if (selectedFilters.filter2) {
+        filteredData = filteredData.filter((game) => game.genre === selectedFilters.filter2);
       }
-      if(stateUse !== null){
-        setMapData(stateUse)
-        setFilterData(stateUse)
+      if (selectedSort === 'alphabetical') {
+        filteredData = filteredData.sort((a, b) => a.title.localeCompare(b.title));
+      } else if (selectedSort === 'Release(desc)') {
+        filteredData = filteredData.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+      } else if (selectedSort === 'Release(asc)') {
+        filteredData = filteredData.sort((a, b) => new Date(a.release_date) - new Date(b.release_date));
+      }
+      setMapData(filteredData);
+      setFilterData(filteredData)
       } else{
-        filterAndSort()
+        let filteredData = [...popularityGames];
+        if (selectedFilters.filter1) {
+        filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
+      } 
+    
+      if (selectedFilters.filter2) {
+        filteredData = filteredData.filter((game) => game.genre === selectedFilters.filter2);
+      }setMapData(filteredData);
+      setFilterData(filteredData)
+    }
+      
+    }
+      if (!isInitialized) {
+        setIsInitialized(true);
+  
+        if (stateUse === 'PC (Windows)' || stateUse === 'Web Browser') {
+          const filtered = popularityGames.filter((game) => game.platform === stateUse)
+          
+          setMapData(filtered)
+          console.log(mapData);
+          setSelectedSort('popularity');
+          setSelectedFilters({
+            filter1: stateUse,
+            filter2: null,
+          });
+          
+        } else if (stateUse !== null) {
+          setMapData(stateUse);
+          setFilterData(stateUse);
+        } else {
+          filterAndSort();
+        }
+      }else if (Array.isArray(stateUse)) {
+        setMapData(stateUse);
+        setFilterData(stateUse);
+      } else {
+        filterAndSort();
       }
       
       
-  },[ selectedSort , popularityGames, selectedFilters, allGames, stateUse])
+  },[ selectedSort , popularityGames, selectedFilters, allGames, stateUse, isInitialized])
 
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
@@ -96,6 +129,7 @@ const AllGames = () => {
       ...prevFilters,
       [filterType]: null,
     }));
+    setStateuse(null)
   };
 const gameFilter = (searchInput) =>{
   const filtered = filterData.filter((game)=>{
@@ -106,6 +140,7 @@ const gameFilter = (searchInput) =>{
 }
   const removeSort = () => {
     setSelectedSort(null);
+    setStateuse(null)
   };
   console.log(selectedFilters);
   console.log(selectedSort);
@@ -116,7 +151,7 @@ const gameFilter = (searchInput) =>{
     btnShow={false}/>
     <section className="AllGamePage">
       <HeaderAllGame/>
-    <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={stateUse!==null ? <button className="btnAll" onClick={()=>setStateuse(null)}>SHOW ALL GAMES</button>:null}/>
+    <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={mapData.length<=0 || stateUse!== null ? <button className="btnAll" onClick={()=>{setMapData(allGames);setStateuse(null)}}>SHOW ALL GAMES</button>:null}/>
 
       
 
@@ -145,9 +180,9 @@ const gameFilter = (searchInput) =>{
         </ul>
       </div>
       <section className="cardWrapper">
-      <div className="btn_Navigation">
+      {mapData?.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation">
           <img src={ArrowLeft} alt="" onClick={handlePrevClick} />
-        </div>
+        </div>}
         <div className="mapWrap">
         {mapData?.slice(startIndex, startIndex + itemsPerPage).map((game, index)=><Card
         key={index}
@@ -163,11 +198,11 @@ const gameFilter = (searchInput) =>{
         filterfunc3={()=>{handleFilter('filter1',"PC (Windows)")}}
         filterfunc4={()=>{handleFilter('filter1',"Web Browser")}}
         />)}
-        { mapData?.length<=0 ? <h1>No Game Was Found</h1> : null}
+        { mapData?.length<=0 ? <div className="imgcontainer"><img onClick={()=>{setMapData(allGames);setStateuse(null)}} className="soldierimg" src={Soldier} alt="Soldier with No Game Found Shield"/></div> : null}
         </div>
-        <div className="btn_Navigation">
+        {mapData.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation">
           <img src={ArrowRight} alt="" onClick={handleNextClick} />
-        </div>
+        </div>}
       </section>
           
     </section>

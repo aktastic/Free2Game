@@ -28,13 +28,17 @@ const Home = () => {
     })
     navigate('/allgames', {state: filtered})
   }
+  const navigatePcTop =()=>{
+    navigate('/allgames',{state: 'PC (Windows)'})
+  }
+  const navigateBrowserTop =()=>{
+    navigate('/allgames',{state: 'Web Browser'})
+  }
 
-
-
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   
-
-
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -
@@ -85,7 +89,7 @@ const Home = () => {
               />
             ))}
           </div>
-          <ButtonFilled name="SHOW MORE" />
+          <ButtonFilled navigateFunc={()=>navigate('/recentlyadded')} name="SHOW MORE" />
         </section>
         <section className="topForPC">
           <h2>Top 4 Games for PC in June 2021</h2>
@@ -138,7 +142,7 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <ButtonFilled name="SHOW MORE" />
+          <ButtonFilled navigateFunc={navigatePcTop} name="SHOW MORE" />
         </section>
         <section className="topForBrowser">
           <h2>Top 4 Games for Browser in June 2021</h2>
@@ -155,7 +159,7 @@ const Home = () => {
               />
             ))}
           </div>
-          <ButtonFilled name="SHOW MORE" />
+          <ButtonFilled navigateFunc={navigateBrowserTop} name="SHOW MORE" />
         </section>
       </main>
 
