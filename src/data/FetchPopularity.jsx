@@ -14,7 +14,7 @@ const FetchPopularity = () => {
         console.error(err);
       });
   }, []);
-  console.log(popularityGames);
+  
 };
 
 export default FetchPopularity;

@@ -11,7 +11,7 @@ const FetchRelevance = () => {
         setRelevanceGames(json);
       });
   }, []);
-  console.log(relevanceGames);
+  
 };
 
 export default FetchRelevance;

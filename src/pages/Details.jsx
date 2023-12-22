@@ -3,7 +3,8 @@ import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import "./Details.scss";
 import { Link, useParams } from "react-router-dom";
-import HeaderBanner from "../components/HeaderBanner";
+// import HeaderBanner from "../components/HeaderBanner";
+import HeaderAllGame from "../components/HeaderAllGame";
 
 const Details = () => {
   const { id } = useParams();
@@ -19,12 +20,10 @@ const Details = () => {
       .then((game) => setDetailsOfGame(game));
   }, [id]);
 
-  console.log(detailsOFGame);
-
-  const directToGamePage = () => {};
   return (
     <>
-      <HeaderBanner url={detailsOFGame?.screenshots[0].image} />
+      <HeaderAllGame url={detailsOFGame?.screenshots[0].image} />
+      {/* <HeaderBanner  /> */}
       <section className="details">
         {/* Details */}
         <div className="details_wrapper">

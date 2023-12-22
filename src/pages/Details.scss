@@ -1,5 +1,7 @@
 .details {
-  padding: 5% 5%;
+  // padding: 5% 5%;
+  padding-top: 5%;
+  padding-inline: 5%;
   margin-left: 5rem;
   h2 {
     font-size: 3rem;
@@ -78,15 +80,16 @@
         .additional_info {
           display: grid;
           grid-template-columns: 150px 200px;
+          gap: 2rem;
 
-          h4 {
-            padding-block: 12px;
-            letter-spacing: 1px;
-          }
+          // h4 {
+          //   padding-block: 12px;
+          //   letter-spacing: 1px;
+          // }
 
-          p {
-            padding-block: 12px;
-          }
+          // p {
+          //   padding-block: 12px;
+          // }
         }
       }
 
@@ -96,16 +99,17 @@
           margin-top: 32px;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
           div {
-            padding-right: 1rem;
-            padding-bottom: 1rem;
-            h4 {
-              padding-bottom: 4px;
-              letter-spacing: 1px;
-            }
+            // padding-right: 1rem;
+            // padding-bottom: 1rem;
+            // h4 {
+            //   padding-bottom: 4px;
+            //   letter-spacing: 1px;
+            // }
 
             p {
-              padding-bottom: 18px;
+              // padding-bottom: 18px;
               font-family: "Titillium Web";
             }
           }
