@@ -4,6 +4,7 @@ import ButtonOutline from "../components/ButtonOutline";
 import "./Details.scss";
 import { useParams } from "react-router-dom";
 import HeaderBanner from "../components/HeaderBanner";
+import HeaderAllGame from "../components/HeaderAllGame";
 
 const Details = () => {
   const { id } = useParams();
@@ -23,7 +24,8 @@ const Details = () => {
 
   return (
     <>
-      <HeaderBanner url={detailsOFGame?.screenshots[0].image} />
+      <HeaderAllGame url={detailsOFGame?.screenshots[0].image} />
+      {/* <HeaderBanner  /> */}
       <section className="details">
         {/* Details */}
         <h2>Hier kommen die Main Details</h2>
