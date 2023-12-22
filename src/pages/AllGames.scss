@@ -1,7 +1,6 @@
 .AllGamePage {
   font-family: "Oswald";
 
-
   margin-left: 5rem;
 }
 
@@ -50,7 +49,6 @@
 .outline:hover {
   background-color: #afc7df;
 }
-
 .btnAll {
   background-color: var(--highlight);
   color: var(--text-title);
@@ -67,11 +65,9 @@
 }
 
 .cardWrapper {
-
   // margin-top: 5%;
   display: flex;
   // padding-left: 100px;
-
   justify-content: space-between;
   position: relative;
   .mapWrap {
@@ -85,7 +81,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     cursor: pointer;
     svg {
       width: 3rem;
@@ -95,7 +90,6 @@
       stroke: var(--highlight);
       stroke-linecap: round;
       stroke-linejoin: round;
-
       border-radius: 50px;
       &:nth-of-type(1) {
         margin-inline: 12px;
