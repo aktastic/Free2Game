@@ -35,10 +35,12 @@ const Home = () => {
     navigate('/allgames',{state: 'Web Browser'})
   }
 
+
   useEffect(()=>{
     window.scrollTo(0,0)
   },[])
   
+
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -

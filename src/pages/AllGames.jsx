@@ -5,14 +5,14 @@ import Group from "../img/Group.svg";
 import { AllGamesContext, PopularityContext } from "../context/FetchContext";
 import Card from "../components/Card";
 import HeaderAllGame from "../components/HeaderAllGame";
-import './AllGames.scss'
-import { FaTimes } from 'react-icons/fa';
+import "./AllGames.scss";
+import { FaTimes } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import Nav from "../components/Nav";
-import Footer from "../components/Footer";
-import ArrowRight from "../img/arrow-right.png";
-import ArrowLeft from "../img/arrow-left.png";
+
+
 import Soldier from "../img/noGameFound.png"
+
 
 const AllGames = () => {
   const { allGames, setAllGanes } = useContext(AllGamesContext);
@@ -23,6 +23,7 @@ const AllGames = () => {
   });
   const [selectedSort, setSelectedSort] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
+
   const itemsPerPage = 12;
   const [filterData, setFilterData] = useState([])
   const [mapData, setMapData] = useState(allGames)
@@ -103,6 +104,7 @@ const AllGames = () => {
       
   },[ selectedSort , popularityGames, selectedFilters, allGames, stateUse, isInitialized])
 
+
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
   };
@@ -116,12 +118,12 @@ const AllGames = () => {
       ...prevFilters,
       [filterType]: value,
     }));
-    setStateuse(null)
+    setStateuse(null);
   };
 
   const handleSort = (value) => {
     setSelectedSort(value);
-    setStateuse(null)
+    setStateuse(null);
   };
 
   const removeFilter = (filterType) => {
@@ -131,13 +133,12 @@ const AllGames = () => {
     }));
     setStateuse(null)
   };
-const gameFilter = (searchInput) =>{
-  const filtered = filterData.filter((game)=>{
-    return game.title.toLowerCase().includes(searchInput.toLowerCase())
-  })
-  setMapData(filtered)
-  
-}
+  const gameFilter = (searchInput) => {
+    const filtered = filterData.filter((game) => {
+      return game.title.toLowerCase().includes(searchInput.toLowerCase());
+    });
+    setMapData(filtered);
+  };
   const removeSort = () => {
     setSelectedSort(null);
     setStateuse(null)
@@ -147,22 +148,30 @@ const gameFilter = (searchInput) =>{
 
   return (
     <>
-    <Nav searchFunc={gameFilter}
-    btnShow={false}/>
-    <section className="AllGamePage">
-      <HeaderAllGame/>
-    <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={mapData.length<=0 || stateUse!== null ? <button className="btnAll" onClick={()=>{setMapData(allGames);setStateuse(null)}}>SHOW ALL GAMES</button>:null}/>
 
-      
+      <Nav searchFunc={gameFilter} btnShow={false} />
+      <section className="AllGamePage">
+        <HeaderAllGame
+          url="https://s3-alpha-sig.figma.com/img/d101/1476/f3a08a9fe47f06e171e4ab204a6fcad0?Expires=1704067200&Signature=ohrac7d~u~NsLhLGDzlVlnPL2SqNfUy7CIH-81IimDC8lY4Ehl-UwfEFIYL5cmUmxECoANDByrXkeKZZEh5S~HQQE-IpcgFM4BgWaNkp9cPu5VzdDST5b1x1Uh1m6MFwowZjc3cOvQZFcNdwRHS28YIbEamiJF621CRYqePhx78mSzsuuQ6d7ReDKE2xNmGuEYSuIO34PvFUDau-7vxtB0AfLyfISh~Grc01IiDnrxLc-RA5HrLAWhuiu40u5OKV6U1tbtugckJoS15eqdJ3pPZvW6OasgewCPqg28vE9ejXXpgZb7atEgNCA~OMbqXSU7VyHbDby0WKctdHJ2fw2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          title="All Games"
+        />
+        <div className="filter_part">
+         <FilterBar sortfunc={(e) => handleSort(e.target.value)} filterfunc1={(e)=>{handleFilter('filter1',e.target.value)}} filterfunc2={(e)=>{handleFilter('filter2',e.target.value)}} btn={mapData.length<=0 || stateUse!== null ? <button className="btnAll" onClick={()=>{setMapData(allGames);setStateuse(null)}}>SHOW ALL GAMES</button>:null}/>
 
-      <div className="filterselectwrapper">
-        <ul>
-          {selectedFilters.filter1 ? (
-            <li>
-              <p className="xbtn" onClick={() => removeFilter("filter1")}><FaTimes/></p>
-              <p>{selectedFilters.filter1}</p>
-            </li>
-          ) : null}
+
+          <div className="filterselectwrapper">
+            <ul>
+              {selectedFilters.filter1 ? (
+                <li>
+                  <p className="xbtn" onClick={() => removeFilter("filter1")}>
+                    <FaTimes />
+                  </p>
+                  <p>{selectedFilters.filter1}</p>
+                </li>
+              ) : null}
+
+              
+
 
           {selectedFilters.filter2 ? (
             <li>
@@ -179,10 +188,16 @@ const gameFilter = (searchInput) =>{
           ) : null}
         </ul>
       </div>
+      </div>
       <section className="cardWrapper">
-      {mapData?.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation">
-          <img src={ArrowLeft} alt="" onClick={handlePrevClick} />
-        </div>}
+      {mapData?.length<=0 || mapData?.length<=12 ? null : <div onClick={handlePrevClick} className="btn_Navigation">
+            <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8407">
+              <path
+                d="M12.4204,1.5l-10.9204,10.9204l10.9204,10.9203"
+                data-paper-data='{"rotation":135}'
+              ></path>
+            </svg>
+          </div>
         <div className="mapWrap">
         {mapData?.slice(startIndex, startIndex + itemsPerPage).map((game, index)=><Card
         key={index}
@@ -200,13 +215,18 @@ const gameFilter = (searchInput) =>{
         />)}
         { mapData?.length<=0 ? <div className="imgcontainer"><img onClick={()=>{setMapData(allGames);setStateuse(null)}} className="soldierimg" src={Soldier} alt="Soldier with No Game Found Shield"/></div> : null}
         </div>
-        {mapData.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation">
-          <img src={ArrowRight} alt="" onClick={handleNextClick} />
-        </div>}
+        {mapData.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation" onClick={handleNextClick}>
+            <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
+              <path
+                d="M1.5,1.5l10.9204,10.9204l-10.9204,10.9204"
+                data-paper-data='{"rotation":45}'
+              ></path>
+            </svg>
+          </div>
+
+            </section>
       </section>
-          
-    </section>
-    {/* <Footer/> */}
+      {/* <Footer/> */}
     </>
   );
 };

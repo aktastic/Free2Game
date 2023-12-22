@@ -6,6 +6,8 @@ import ArrowRight from "../img/arrow-right.png";
 import ArrowLeft from "../img/arrow-left.png";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
+import arrow1_left from "../img/arrows/arrow1_left.svg";
+import arrow1_right from "../img/arrows/arrow1_right.svg";
 
 const RecentlyAdded = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
@@ -32,8 +34,13 @@ const RecentlyAdded = () => {
         <p>RECENTLY ADDED</p>
       </div>
       <section className="recentlyAdded__Wrapper">
-        <div className="btn_Navigation">
-          <img src={ArrowLeft} alt="" onClick={handlePrevClick} />
+        <div onClick={handlePrevClick} className="btn_Navigation">
+          <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8407">
+            <path
+              d="M12.4204,1.5l-10.9204,10.9204l10.9204,10.9203"
+              data-paper-data='{"rotation":135}'
+            ></path>
+          </svg>
         </div>
         <div className="cardsContainer">
           {GamesSortByDate?.slice(startIndex, startIndex + itemsPerPage).map(
@@ -49,8 +56,15 @@ const RecentlyAdded = () => {
             )
           )}
         </div>
-        <div className="btn_Navigation">
-          <img src={ArrowRight} alt="" onClick={handleNextClick} />
+        <div className="btn_Navigation" onClick={handleNextClick}>
+          {/* <img src={ArrowRight} alt="" onClick={handleNextClick} /> */}
+
+          <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
+            <path
+              d="M1.5,1.5l10.9204,10.9204l-10.9204,10.9204"
+              data-paper-data='{"rotation":45}'
+            ></path>
+          </svg>
         </div>
       </section>
     </>

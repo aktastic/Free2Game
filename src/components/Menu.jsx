@@ -2,11 +2,9 @@ import "./Menu.scss";
 import hamburger from "../img/Burger-Icon.svg";
 import homeIcon from "../img/Home.svg";
 import addIcon from "../img/Recently-Added.svg";
-import logowhite from "../img/logowhite.png";
 import logoIcon from "../img/logo.svg";
-import logoWide from "../img/logowide.png";
-import logoNew from "../img/logonew.png";
-import gamesIcon from "../img/Games.png";
+import gamesIcon from "../img/Games.png"
+
 import { NavLink, Link } from "react-router-dom";
 import { useState } from "react";
 import moon from "../img/moon.png";
@@ -58,11 +56,10 @@ const MenuNew = (props) => {
             hamburgerNotClicked ? "main-content-close" : "main-content-side"
           }
         >
-          {/* <img src={logoIcon} alt="Platzhalter Logo" /> */}
-          {/* <img src={logoNew} alt="Platzhalter Logo" /> */}
-          <img src={logoWide} alt="Platzhalter Logo" />
-          {/* <img src={logowhite} alt="Platzhalter Logo" /> */}
-          {/* <h3>FREE2GAME</h3> */}
+          {/* Logo */}
+          <img src={logoIcon} alt="Platzhalter Logo" />
+          {/* Companyname */}
+          <h2>FREE2GAME</h2>
         </div>
       </Link>
 
@@ -137,19 +134,27 @@ const MenuNew = (props) => {
                 </span>
               </NavLink>
             </li>
-          </ul>
-        </nav>
 
-        <div className="mode" onClick={props.onClick}>
+            {/* Lightmode/Darkmode */}
+            {/* <li onClick={props.onClick}>
+              <img className="mode" src={props.darkMode ? sun : moon} alt="image light-/darkmode" />
+              <span className={
+                    hamburgerNotClicked
+                      ? "nav-item-invisible"
+                      : "nav-item-visible"
+                  }>{props.darkMode ? "Light Mode" : "Dark Mode"}</span>
+            </li> */}
+          </ul>
+
+          
+
+        </nav>
+        {/* Dark-/Lightmode */}
+        {/* <div className="mode" onClick={props.onClick}>
           <img src={props.darkMode ? sun : moon} alt="mode" />
-          <p
-          // className={
-          //   hamburgerNotClicked ? "nav-item-invisible" : "nav-item-visible"
-          // }
-          >
-            {props.darkMode ? "Light Mode" : "Dark Mode"}
-          </p>
-        </div>
+          <p>{props.darkMode ? "Light Mode" : "Dark Mode"}</p>
+        </div> */}
+
       </aside>
     </>
   );
