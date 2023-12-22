@@ -95,7 +95,7 @@ const Home = () => {
           <ButtonFilled navigateFunc={()=>navigate('/recentlyadded')} name="SHOW MORE" />
         </section>
         <section className="topForPC">
-          <h2>Top 4 Games for PC in June 2021</h2>
+          <h2>Top 4 Games for PC in December 2023</h2>
           <div className="topForPcCards">
             <div className="card_vertical_PC">
               <img
@@ -148,7 +148,7 @@ const Home = () => {
           <ButtonFilled navigateFunc={navigatePcTop} name="SHOW MORE" />
         </section>
         <section className="topForBrowser">
-          <h2>Top 4 Games for Browser in June 2021</h2>
+          <h2>Top 4 Games for Browser in December 2023</h2>
           <div className="grid_layout">
             {top4InBrowser?.map((game, index) => (
               <Card

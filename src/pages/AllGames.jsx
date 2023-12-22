@@ -82,7 +82,7 @@ const AllGames = () => {
           const filtered = popularityGames.filter((game) => game.platform === stateUse)
           
           setMapData(filtered)
-          
+          window.scrollTo(0,400)
           setSelectedSort('popularity');
           setSelectedFilters({
             filter1: stateUse,
@@ -209,10 +209,10 @@ const AllGames = () => {
         genre={game.genre}
         platform={game.platform}
         svg={game.platform==="PC (Windows)" ? Vector : Group }
-        filterfunc2={(e)=>{handleFilter('filter2',e.target.textContent)}}
-        filterfunc1={()=>{handleFilter('filter1',`${game.platform}`)}}
-        filterfunc3={()=>{handleFilter('filter1',"PC (Windows)")}}
-        filterfunc4={()=>{handleFilter('filter1',"Web Browser")}}
+        filterfunc2={(e)=>{window.scrollTo(0,400),handleFilter('filter2',e.target.textContent)}}
+        filterfunc1={()=>{window.scrollTo(0,400),handleFilter('filter1',`${game.platform}`)}}
+        filterfunc3={()=>{window.scrollTo(0,400),handleFilter('filter1',"PC (Windows)")}}
+        filterfunc4={()=>{window.scrollTo(0,400),handleFilter('filter1',"Web Browser")}}
         />)}
         { mapData?.length<=0 ? <div className="imgcontainer"><img onClick={()=>{setMapData(relevanceGames);setStateuse(null)}} className="soldierimg" src={Soldier} alt="Soldier with No Game Found Shield"/></div> : null}
         
