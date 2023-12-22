@@ -32,3 +32,16 @@
 .allgimg {
   border-radius: 24px;
 }
+
+// Media Queries
+@media screen and (max-width: 835px) {
+  .header_banner {
+    height: 40vh;
+
+    h1 {
+      width: 100%;
+      font-size: 2rem;
+      bottom: 10%;
+    }
+  }
+}

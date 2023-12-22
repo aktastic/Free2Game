@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
 import "./Details.scss";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import HeaderBanner from "../components/HeaderBanner";
 import HeaderAllGame from "../components/HeaderAllGame";
 
@@ -10,6 +10,7 @@ const Details = () => {
   const { id } = useParams();
   const [detailsOFGame, setDetailsOfGame] = useState();
 
+  console.log(id);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -25,14 +26,15 @@ const Details = () => {
       {/* <HeaderBanner  /> */}
       <section className="details">
         {/* Details */}
-        <h2>Hier kommen die Main Details</h2>
         <div className="details_wrapper">
           <div className="part_1">
             <article className="details_left">
               <img src={detailsOFGame?.thumbnail} alt="" />
               <h3>{detailsOFGame?.platform}</h3>
               <ButtonOutline name="Action" />
-              <ButtonFilled name="Play Now" />
+              <a href={detailsOFGame?.game_url} target="_blank">
+                <ButtonFilled name="Play Now" />
+              </a>
             </article>
             <article className="details_right">
               <h3>About</h3>
@@ -73,7 +75,7 @@ const Details = () => {
             {/* System Requirements */}
             <article className="system_requirements_container">
               {/* bei "Plattform" props einfügen! */}
-              <h3>Minimum System Requirements (Plattform)</h3>
+              <h3>Minimum System Requirements ({detailsOFGame?.platform})</h3>
               <div className="system_requirements_grid">
                 <div>
                   <h4>OS</h4>
