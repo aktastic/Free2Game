@@ -128,10 +128,12 @@
     position: absolute;
     // Arrow rechts
     bottom: -50px;
+    right: 20px;
 
     // Arrow links
     &:nth-of-type(1) {
       bottom: -50px;
+      left: 20px;
     }
   }
 }
