@@ -197,7 +197,7 @@ const AllGames = () => {
                 data-paper-data='{"rotation":135}'
               ></path>
             </svg>
-          </div>
+          </div>}
         <div className="mapWrap">
         {mapData?.slice(startIndex, startIndex + itemsPerPage).map((game, index)=><Card
         key={index}
@@ -214,7 +214,7 @@ const AllGames = () => {
         filterfunc4={()=>{handleFilter('filter1',"Web Browser")}}
         />)}
         { mapData?.length<=0 ? <div className="imgcontainer"><img onClick={()=>{setMapData(allGames);setStateuse(null)}} className="soldierimg" src={Soldier} alt="Soldier with No Game Found Shield"/></div> : null}
-        </div>
+        
         {mapData.length<=0 || mapData?.length<=12 ? null : <div className="btn_Navigation" onClick={handleNextClick}>
             <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
               <path
@@ -222,6 +222,7 @@ const AllGames = () => {
                 data-paper-data='{"rotation":45}'
               ></path>
             </svg>
+          </div>}
           </div>
 
             </section>

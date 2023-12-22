@@ -47,6 +47,7 @@ const RecentlyAdded = () => {
             (game) => (
               <Card
                 key={game.id}
+                id={game.id}
                 thumbnail={game.thumbnail}
                 title={game.title}
                 genre={game.genre}
