@@ -82,7 +82,7 @@ const AllGames = () => {
           const filtered = popularityGames.filter((game) => game.platform === stateUse)
           
           setMapData(filtered)
-          console.log(mapData);
+          
           setSelectedSort('popularity');
           setSelectedFilters({
             filter1: stateUse,
@@ -113,7 +113,7 @@ const AllGames = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - itemsPerPage));
   };
 
-  console.log(allGames);
+  
   const handleFilter = (filterType, value) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
@@ -144,8 +144,8 @@ const AllGames = () => {
     setSelectedSort(null);
     setStateuse(null)
   };
-  console.log(selectedFilters);
-  console.log(selectedSort);
+  
+  
 
   return (
     <>

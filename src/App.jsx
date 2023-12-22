@@ -42,9 +42,7 @@ function App() {
             <DetailsContext.Provider
               value={{ detailsOfGames, setDetailsOfGames }}
             >
-              <FetchAllGames />
-              <FetchPopularity />
-              <FetchRelevance />
+              
               <BrowserRouter>
                 <Menu onClick={changeMode} darkMode={darkMode} />
 

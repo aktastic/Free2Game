@@ -9,7 +9,7 @@ const Details = () => {
   const { id } = useParams();
   const [detailsOFGame, setDetailsOfGame] = useState();
 
-  console.log(id);
+  
   useEffect(()=>{
     window.scrollTo(0,0)
   },[])
@@ -19,7 +19,7 @@ const Details = () => {
       .then((game) => setDetailsOfGame(game));
   }, [id]);
 
-  console.log(detailsOFGame);
+  
 
   return (
     <>
