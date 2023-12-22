@@ -1,10 +1,22 @@
 .AllGamePage {
   font-family: "Oswald";
-  margin-inline: 110px 24px;
+
+
+  margin-left: 5rem;
+}
+
+.filter_part {
+  padding-left: 4.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.filterdiv {
+  margin-top: 5%;
 }
 
 .filterselectwrapper {
-  padding-bottom: 3%;
+  padding-bottom: 2.5%;
 }
 
 .filterselectwrapper ul {
@@ -16,7 +28,7 @@
 .filterselectwrapper ul li {
   list-style-type: none;
   display: flex;
-  gap: 5px;
+  gap: 0.5rem;
   border: 1px solid #ff4654;
   padding: 6px 12px;
   border-radius: 12px;
@@ -38,6 +50,7 @@
 .outline:hover {
   background-color: #afc7df;
 }
+
 .btnAll {
   background-color: var(--highlight);
   color: var(--text-title);
@@ -54,9 +67,11 @@
 }
 
 .cardWrapper {
-  margin-top: 5%;
+
+  // margin-top: 5%;
   display: flex;
-  padding-left: 100px;
+  // padding-left: 100px;
+
   justify-content: space-between;
   position: relative;
   .mapWrap {
@@ -70,22 +85,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &:nth-of-type(1) {
-      position: absolute;
-      top: 50%;
-      left: 5%;
-    }
-    &:nth-of-type(2) {
-      position: absolute;
-      top: 50%;
-      right: 5%;
-    }
 
-    img {
-      // position: fixed;
-      cursor: pointer;
-      background: #375470;
-      border: 2px solid #ff4654;
+    cursor: pointer;
+    svg {
+      width: 3rem;
+
+      fill: var(--primary);
+      stroke-width: 2px;
+      stroke: var(--highlight);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+
       border-radius: 50px;
       &:nth-of-type(1) {
         margin-inline: 12px;

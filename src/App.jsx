@@ -39,9 +39,6 @@ function App() {
           <RelevanceContext.Provider
             value={{ relevanceGames, setRelevanceGames }}
           >
-
-            
-
             <DetailsContext.Provider
               value={{ detailsOfGames, setDetailsOfGames }}
             >
@@ -49,7 +46,6 @@ function App() {
               <FetchPopularity />
               <FetchRelevance />
               <BrowserRouter>
-                
                 <Menu onClick={changeMode} darkMode={darkMode} />
 
                 <Routes>
@@ -60,10 +56,9 @@ function App() {
                   {/* Test Details */}
                   <Route path="/details" element={<Details />} />
                 </Routes>
-                <Footer/>
+                <Footer />
               </BrowserRouter>
             </DetailsContext.Provider>
-
           </RelevanceContext.Provider>
         </PopularityContext.Provider>
       </AllGamesContext.Provider>
