@@ -11,7 +11,9 @@ const Details = () => {
   const [detailsOFGame, setDetailsOfGame] = useState();
 
   console.log(id);
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[])
   useEffect(() => {
     fetch(`https://www.freetogame.com/api/game?id=${id}`)
       .then((res) => res.json())

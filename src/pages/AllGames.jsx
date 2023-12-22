@@ -2,19 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import FilterBar from "../components/filterbar/FilterBar";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
-import { AllGamesContext, PopularityContext } from "../context/FetchContext";
+import {
+  AllGamesContext,
+  PopularityContext,
+  RelevanceContext,
+} from "../context/FetchContext";
 import Card from "../components/Card";
 import HeaderAllGame from "../components/HeaderAllGame";
 import "./AllGames.scss";
 import { FaTimes } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import Nav from "../components/Nav";
-// import Footer from "../components/Footer";
-// import ArrowRight from "../img/arrow-right.png";
-// import ArrowLeft from "../img/arrow-left.png";
+
+import Soldier from "../img/noGameFound.png";
 
 const AllGames = () => {
   const { allGames, setAllGanes } = useContext(AllGamesContext);
+  const { relevanceGames, setRelevanceGames } = useContext(RelevanceContext);
   const { popularityGames, setPopularityGames } = useContext(PopularityContext);
   const [selectedFilters, setSelectedFilters] = useState({
     filter1: null,
@@ -22,59 +26,102 @@ const AllGames = () => {
   });
   const [selectedSort, setSelectedSort] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 40;
+
+  const itemsPerPage = 12;
   const [filterData, setFilterData] = useState([]);
-  const [mapData, setMapData] = useState(allGames);
+  const [mapData, setMapData] = useState(relevanceGames);
   const location = useLocation();
   const state = location.state;
 
+  const [isInitialized, setIsInitialized] = useState(false);
   const [stateUse, setStateuse] = useState(state);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const filterAndSort = () => {
-      let filteredData = [...allGames];
+      if (selectedSort !== "popularity") {
+        let filteredData = [...relevanceGames];
 
-      if (selectedFilters.filter1) {
-        filteredData = filteredData.filter(
-          (game) => game.platform === selectedFilters.filter1
-        );
-      }
-      if (selectedFilters.filter1 === "Web Browser") {
-        filteredData = filteredData.filter((game) =>
-          game.platform.includes(selectedFilters.filter1)
-        );
-      }
+        if (selectedFilters.filter1) {
+          filteredData = filteredData.filter(
+            (game) => game.platform === selectedFilters.filter1
+          );
+        }
 
-      if (selectedFilters.filter2) {
-        filteredData = filteredData.filter(
-          (game) => game.genre === selectedFilters.filter2
-        );
+        if (selectedFilters.filter2) {
+          filteredData = filteredData.filter(
+            (game) => game.genre === selectedFilters.filter2
+          );
+        }
+        if (selectedSort === "alphabetical") {
+          filteredData = filteredData.sort((a, b) =>
+            a.title.localeCompare(b.title)
+          );
+        } else if (selectedSort === "Release(desc)") {
+          filteredData = filteredData.sort(
+            (a, b) => new Date(b.release_date) - new Date(a.release_date)
+          );
+        } else if (selectedSort === "Release(asc)") {
+          filteredData = filteredData.sort(
+            (a, b) => new Date(a.release_date) - new Date(b.release_date)
+          );
+        }
+        setMapData(filteredData);
+        setFilterData(filteredData);
+      } else {
+        let filteredData = [...popularityGames];
+        if (selectedFilters.filter1) {
+          filteredData = filteredData.filter(
+            (game) => game.platform === selectedFilters.filter1
+          );
+        }
+
+        if (selectedFilters.filter2) {
+          filteredData = filteredData.filter(
+            (game) => game.genre === selectedFilters.filter2
+          );
+        }
+        setMapData(filteredData);
+        setFilterData(filteredData);
       }
-      if (selectedSort === "popularity") {
-        filteredData = popularityGames;
-      } else if (selectedSort === "alphabetical") {
-        filteredData = filteredData.sort((a, b) =>
-          a.title.localeCompare(b.title)
-        );
-      } else if (selectedSort === "Release(desc)") {
-        filteredData = filteredData.sort(
-          (a, b) => new Date(b.release_date) - new Date(a.release_date)
-        );
-      } else if (selectedSort === "Release(asc)") {
-        filteredData = filteredData.sort(
-          (a, b) => new Date(a.release_date) - new Date(b.release_date)
-        );
-      }
-      setMapData(filteredData);
-      setFilterData(filteredData);
     };
-    if (stateUse !== null) {
+    if (!isInitialized) {
+      setIsInitialized(true);
+
+      if (stateUse === "PC (Windows)" || stateUse === "Web Browser") {
+        const filtered = popularityGames.filter(
+          (game) => game.platform === stateUse
+        );
+
+        setMapData(filtered);
+        console.log(mapData);
+        setSelectedSort("popularity");
+        setSelectedFilters({
+          filter1: stateUse,
+          filter2: null,
+        });
+      } else if (stateUse !== null) {
+        setMapData(stateUse);
+        setFilterData(stateUse);
+      } else {
+        filterAndSort();
+      }
+    } else if (Array.isArray(stateUse)) {
       setMapData(stateUse);
       setFilterData(stateUse);
     } else {
       filterAndSort();
     }
-  }, [selectedSort, popularityGames, selectedFilters, allGames, stateUse]);
+  }, [
+    selectedSort,
+    popularityGames,
+    selectedFilters,
+    relevanceGames,
+    stateUse,
+    isInitialized,
+  ]);
 
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
@@ -102,6 +149,7 @@ const AllGames = () => {
       ...prevFilters,
       [filterType]: null,
     }));
+    setStateuse(null);
   };
   const gameFilter = (searchInput) => {
     const filtered = filterData.filter((game) => {
@@ -111,6 +159,7 @@ const AllGames = () => {
   };
   const removeSort = () => {
     setSelectedSort(null);
+    setStateuse(null);
   };
   console.log(selectedFilters);
   console.log(selectedSort);
@@ -133,8 +182,14 @@ const AllGames = () => {
               handleFilter("filter2", e.target.value);
             }}
             btn={
-              stateUse !== null ? (
-                <button className="btnAll" onClick={() => setStateuse(null)}>
+              mapData.length <= 0 || stateUse !== null ? (
+                <button
+                  className="btnAll"
+                  onClick={() => {
+                    setMapData(relevanceGames);
+                    setStateuse(null);
+                  }}
+                >
                   SHOW ALL GAMES
                 </button>
               ) : null
@@ -173,14 +228,27 @@ const AllGames = () => {
           </div>
         </div>
         <section className="cardWrapper">
-          <div onClick={handlePrevClick} className="btn_Navigation">
-            <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8407">
-              <path
-                d="M12.4204,1.5l-10.9204,10.9204l10.9204,10.9203"
-                data-paper-data='{"rotation":135}'
-              ></path>
-            </svg>
-          </div>
+          {mapData?.length <= 0 || mapData?.length <= 12 ? (
+            <div onClick={handlePrevClick} className="btn_Navigation">
+              <svg
+                display="hidden"
+                width="16.8"
+                height="30"
+                viewBox="0 0 13.9204 24.8407"
+              >
+                <path></path>
+              </svg>
+            </div>
+          ) : (
+            <div onClick={handlePrevClick} className="btn_Navigation">
+              <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8407">
+                <path
+                  d="M12.4204,1.5l-10.9204,10.9204l10.9204,10.9203"
+                  data-paper-data='{"rotation":135}'
+                ></path>
+              </svg>
+            </div>
+          )}
           <div className="mapWrap">
             {mapData
               ?.slice(startIndex, startIndex + itemsPerPage)
@@ -208,17 +276,37 @@ const AllGames = () => {
                   }}
                 />
               ))}
-            {mapData?.length <= 0 ? <h1>No Game Was Found</h1> : null}
+            {mapData?.length <= 0 ? (
+              <div className="imgcontainer">
+                <img
+                  onClick={() => {
+                    setMapData(relevanceGames);
+                    setStateuse(null);
+                  }}
+                  className="soldierimg"
+                  src={Soldier}
+                  alt="Soldier with No Game Found Shield"
+                />
+              </div>
+            ) : null}
           </div>
 
-          <div className="btn_Navigation" onClick={handleNextClick}>
-            <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
-              <path
-                d="M1.5,1.5l10.9204,10.9204l-10.9204,10.9204"
-                data-paper-data='{"rotation":45}'
-              ></path>
-            </svg>
-          </div>
+          {mapData.length <= 0 || mapData?.length <= 12 ? (
+            <div className="btn_Navigation" onClick={handleNextClick}>
+              <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
+                <path></path>
+              </svg>
+            </div>
+          ) : (
+            <div className="btn_Navigation" onClick={handleNextClick}>
+              <svg width="16.8" height="30" viewBox="0 0 13.9204 24.8408">
+                <path
+                  d="M1.5,1.5l10.9204,10.9204l-10.9204,10.9204"
+                  data-paper-data='{"rotation":45}'
+                ></path>
+              </svg>
+            </div>
+          )}
         </section>
       </section>
       {/* <Footer/> */}

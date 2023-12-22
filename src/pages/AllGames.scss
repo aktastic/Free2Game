@@ -1,7 +1,7 @@
 .AllGamePage {
   font-family: "Oswald";
 
-  margin-left: 5rem;
+  // margin-inline: 5rem;
 }
 
 .filter_part {
@@ -96,4 +96,20 @@
       }
     }
   }
+}
+
+.soldierimg {
+  width: 40%;
+  margin-left: 25%;
+
+  margin-bottom: 5%;
+  // margin-top: -8%;
+  border-radius: 20px;
+  border: 4px ridge var(--highlight);
+  cursor: pointer;
+}
+
+.soldierimg:hover {
+  border: 10px ridge #375470;
+  box-shadow: 1px 1px 8px 5px #afc7df;
 }

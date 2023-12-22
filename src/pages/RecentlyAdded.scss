@@ -1,18 +1,22 @@
-.heroImg {
-  position: relative;
-  background-image: url(../img/LoL-Banner.png);
-  height: 70vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  p {
-    font-size: 4rem;
-    position: absolute;
-    bottom: 100px;
-    left: 200px;
-  }
+// .heroImg {
+//   position: relative;
+//   background-image: url(../img/LoL-Banner.png);
+//   height: 70vh;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+//   border-radius: 24px;
+//   p {
+//     font-size: 4rem;
+//     position: absolute;
+//     bottom: 100px;
+//     left: 200px;
+//   }
+// }
+.cardWrapper,
+.filter_part {
+  margin-left: 5rem;
 }
-
 .recentlyAdded__Wrapper {
   margin-top: 5%;
   display: flex;
