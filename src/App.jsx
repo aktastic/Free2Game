@@ -20,6 +20,7 @@ import Menu from "./components/Menu";
 
 import "./App.scss";
 import Footer from "./components/Footer";
+// import FetchAllGames from "./data/FetchAllGames";
 
 function App() {
   const [allGames, setAllGames] = useState([]);
@@ -42,10 +43,10 @@ function App() {
             <DetailsContext.Provider
               value={{ detailsOfGames, setDetailsOfGames }}
             >
-              <FetchAllGames/>
-              
-              <FetchPopularity/>
-              <FetchRelevance/>
+              <FetchAllGames />
+              <FetchPopularity />
+              <FetchRelevance />
+
               <BrowserRouter>
                 <Menu onClick={changeMode} darkMode={darkMode} />
 

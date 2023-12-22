@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 
 import { AllGamesContext } from "../context/FetchContext";
@@ -6,7 +5,7 @@ import { PopularityContext } from "../context/FetchContext";
 
 import ButtonFilled from "../components/ButtonFilled";
 import ButtonOutline from "../components/ButtonOutline";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 import Vector from "../img/Vector.svg";
 import Group from "../img/Group.svg";
 import Card from "../components/Card";
@@ -20,28 +19,26 @@ import TopIcon from "../components/TopIcon";
 import "./Home.scss";
 const Home = () => {
   const { allGames, setAllGames } = useContext(AllGamesContext);
-  
+
   const [top1GameInPc, setTop1GameInPc] = useState({});
-  const navigate = useNavigate()
-  const gameFilter = (searchInput) =>{
-    const filtered = allGames.filter((game)=>{
-      return game.title.toLowerCase().includes(searchInput.toLowerCase())
-    })
-    navigate('/allgames', {state: filtered})
-  }
-  const navigatePcTop =()=>{
-    navigate('/allgames',{state: 'PC (Windows)'})
-  }
-  const navigateBrowserTop =()=>{
-    navigate('/allgames',{state: 'Web Browser'})
-  }
+  const navigate = useNavigate();
+  const gameFilter = (searchInput) => {
+    const filtered = allGames.filter((game) => {
+      return game.title.toLowerCase().includes(searchInput.toLowerCase());
+    });
+    navigate("/allgames", { state: filtered });
+  };
+  const navigatePcTop = () => {
+    navigate("/allgames", { state: "PC (Windows)" });
+  };
+  const navigateBrowserTop = () => {
+    navigate("/allgames", { state: "Web Browser" });
+  };
 
-
-  useEffect(()=>{
-    window.scrollTo(0,0)
-  },[])
-  
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  console.log(allGames);
   const GamesSortByDate = allGames.sort(
     (game1, game2) =>
       new Date(game2.release_date).getTime() -
@@ -66,7 +63,7 @@ const Home = () => {
         .then((game) => setTop1GameInPc(game));
     }
   }, [top1InPcID]);
-  
+
   return (
     <>
     <Nav searchFunc={gameFilter} btnShow={true}/>
@@ -110,9 +107,9 @@ const Home = () => {
               <div className="over_image">
                 <h2>{popularGamesInPC[0]?.title}</h2>
 
-                <Link to={`/details/${popularGamesInPC[0]?.id}`}>
-                  <ButtonFilled name="READ MORE" />
-                </Link>
+                  <Link to={`/details/${popularGamesInPC[0]?.id}`}>
+                    <ButtonFilled name="READ MORE" />
+                  </Link>
 
                 <div className="outline_buttons">
                   <ButtonOutline
@@ -166,8 +163,8 @@ const Home = () => {
         </section>
       </main>
 
-      {/* <Footer /> */}
-    </section>
+        {/* <Footer /> */}
+      </section>
     </>
   );
 };
