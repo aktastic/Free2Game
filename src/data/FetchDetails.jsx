@@ -18,18 +18,18 @@ const FetchDetails = () => {
     let completedFetches = 0;
     const totalGames = allGames.length;
 
-    allGames.forEach((element) => {
-      fetch(`https://www.freetogame.com/api/game?id=${element.id}`)
-        .then((res) => res.json())
-        .then((json) => {
-          detailsArray.push(json);
-          completedFetches++;
+    // allGames.forEach((element) => {
+    //   fetch(`https://www.freetogame.com/api/game?id=${element.id}`)
+    //     .then((res) => res.json())
+    //     .then((json) => {
+    //       detailsArray.push(json);
+    //       completedFetches++;
 
-          if (completedFetches === allGames.length) {
-            setDetailsOfGames(detailsArray);
-          }
-        });
-    });
+    //       if (completedFetches === allGames.length) {
+    //         setDetailsOfGames(detailsArray);
+    //       }
+    //     });
+    // });
   }, []);
 
   
