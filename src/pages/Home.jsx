@@ -117,8 +117,8 @@ const Home = () => {
                       <img
                         src={
                           popularGamesInPC[0]?.platform === "PC (Windows)"
-                            ? Group
-                            : Vector
+                            ? Vector
+                            : Group
                         }
                       />
                     }
