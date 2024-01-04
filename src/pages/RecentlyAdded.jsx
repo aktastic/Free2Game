@@ -35,7 +35,7 @@ const RecentlyAdded = () => {
         <p>RECENTLY ADDED</p>
       </div> */}
       <HeaderAllGame
-        url="https://s3-alpha-sig.figma.com/img/fcad/b8ad/11357d1983fd766136108d889aa4169f?Expires=1704067200&Signature=p5NhyhCGGwvQa4NmPxeq9fQXGcfQg97Tl2dpxM~TFs13xm7gSLUd4Xv2TtYNLTTuLOGErN95eacrQmuJMGI0sHjyzCmfMKm66vikz4M4qtYCxVuvizlhD6FusfAhVEgxjfmovHjk8O8jHawL4CkcADZdUmGcKS176UEYm4yLnbiswYggQT5npQdivivpsoURLAO6tmN4alJxRaz8R4uwL3ARaQiEblGx4h2Zj6baPnlq8uPSt5XNbsncekQ6pNgETktLzaCtqMbs3IYk83Mo6GZfqt66ewGH960QmdEvFHidNmXLYONGxwIIwcqKbb8nT0~5m7~5TkKuluPDmnvgJw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+        url="https://s3-alpha-sig.figma.com/img/fcad/b8ad/11357d1983fd766136108d889aa4169f?Expires=1705276800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=TsInY0s7OxnqMlv~yJDcnsSkOvUHLQOPgBXovnAyV3dn0pfhdSXBkI5NCevJ91OIdP8-FV006Gp1IYASLdQGlwOAn3MES8oSetvMxAUlyouZyumk6LrB66tlR-uzOJ5h2tYE8qUg-ZViWmPGEWU8nIUFsgDP4AQT-kS4Ec8E01F--8tfWMrYMuzA2A-u~J0CFeUdNHUNaOQcCLy3l7DrFr3qmXClakMF8s8Q-F1rXdmqjKwA9ccicIDhDNnqPzRZ27bWfafxVBaKQfSf4Z1xF0DSqBd2~kE9mfXYVcB08SChaLrYuAEowQibnylWaA0OCvmpzAp4mX6S3eK7g6LBfg__"
         title="RECENTLY ADDED"
       />
 

@@ -73,54 +73,63 @@ const AllGames = () => {
       } else {
         let filteredData = [...popularityGames];
         if (selectedFilters.filter1) {
-        filteredData = filteredData.filter((game) => game.platform === selectedFilters.filter1);
-      } 
-    
-      if (selectedFilters.filter2) {
-        filteredData = filteredData.filter((game) => game.genre === selectedFilters.filter2);
-      }setMapData(filteredData);
-      setFilterData(filteredData)
-    }
-      
-    }
-      if (!isInitialized) {
-        setIsInitialized(true);
-  
-        if (stateUse === 'PC (Windows)' || stateUse === 'Web Browser') {
-          const filtered = popularityGames.filter((game) => game.platform === stateUse)
-          
-          setMapData(filtered)
-          window.scrollTo(0,400)
-          setSelectedSort('popularity');
-          setSelectedFilters({
-            filter1: stateUse,
-            filter2: null,
-          });
-          
-        } else if (stateUse !== null) {
-          setMapData(stateUse);
-          setFilterData(stateUse);
-        } else {
-          filterAndSort();
+          filteredData = filteredData.filter(
+            (game) => game.platform === selectedFilters.filter1
+          );
         }
-      }else if (Array.isArray(stateUse)) {
+
+        if (selectedFilters.filter2) {
+          filteredData = filteredData.filter(
+            (game) => game.genre === selectedFilters.filter2
+          );
+        }
+        setMapData(filteredData);
+        setFilterData(filteredData);
+      }
+    };
+    if (!isInitialized) {
+      setIsInitialized(true);
+
+      if (stateUse === "PC (Windows)" || stateUse === "Web Browser") {
+        const filtered = popularityGames.filter(
+          (game) => game.platform === stateUse
+        );
+
+        setMapData(filtered);
+        window.scrollTo(0, 400);
+        setSelectedSort("popularity");
+        setSelectedFilters({
+          filter1: stateUse,
+          filter2: null,
+        });
+      } else if (stateUse !== null) {
         setMapData(stateUse);
         setFilterData(stateUse);
       } else {
         filterAndSort();
       }
-      
-      
-  },[ selectedSort , popularityGames, selectedFilters, relevanceGames, stateUse, isInitialized])
-
+    } else if (Array.isArray(stateUse)) {
+      setMapData(stateUse);
+      setFilterData(stateUse);
+    } else {
+      filterAndSort();
+    }
+  }, [
+    selectedSort,
+    popularityGames,
+    selectedFilters,
+    relevanceGames,
+    stateUse,
+    isInitialized,
+  ]);
 
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 800);
   };
   const handlePrevClick = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - itemsPerPage));
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 800);
   };
 
   const handleFilter = (filterType, value) => {
@@ -159,7 +168,7 @@ const AllGames = () => {
       <Nav searchFunc={gameFilter} btnShow={false} />
       <section className="AllGamePage">
         <HeaderAllGame
-          url="https://s3-alpha-sig.figma.com/img/d101/1476/f3a08a9fe47f06e171e4ab204a6fcad0?Expires=1704067200&Signature=ohrac7d~u~NsLhLGDzlVlnPL2SqNfUy7CIH-81IimDC8lY4Ehl-UwfEFIYL5cmUmxECoANDByrXkeKZZEh5S~HQQE-IpcgFM4BgWaNkp9cPu5VzdDST5b1x1Uh1m6MFwowZjc3cOvQZFcNdwRHS28YIbEamiJF621CRYqePhx78mSzsuuQ6d7ReDKE2xNmGuEYSuIO34PvFUDau-7vxtB0AfLyfISh~Grc01IiDnrxLc-RA5HrLAWhuiu40u5OKV6U1tbtugckJoS15eqdJ3pPZvW6OasgewCPqg28vE9ejXXpgZb7atEgNCA~OMbqXSU7VyHbDby0WKctdHJ2fw2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+          url="https://s3-alpha-sig.figma.com/img/d101/1476/f3a08a9fe47f06e171e4ab204a6fcad0?Expires=1705276800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=STtEUhGCyUaxxw9sgfG4xGBBfo3QMzGdirzQRLvMSBdBt-J70-ldBGexIjWz88E5h3EgJmd4CDVZMPvXxMzc740WSXNlBND6UhwC~528O9hkyx3G-hx~oDimWoqz1Y02uFZpdAMDNX8Thkrt7zvxeHU-Vf6L0oUCsoeVEaif0nlj-X12FY3DXEh1dVx-aW9L3tt7yeMjinppqJCUdSQyUznBv91nukyulHAtUx4QX~L7sOi3A5VuQHoUn5F4kspHlL0TReJvMRzZirlfVdzlGTEv30hBIriBOIYj6P5RW4nEBh~DYErfTUbALVSRsnhEI6Bm3Gc0iRgICw~ScDU2Ug__"
           title="All Games"
         />
         <div className="filter_part">
@@ -253,16 +262,20 @@ const AllGames = () => {
                   platform={game.platform}
                   svg={game.platform === "PC (Windows)" ? Vector : Group}
                   filterfunc2={(e) => {
-                    window.scrollTo(0,400),handleFilter("filter2", e.target.textContent);
+                    window.scrollTo(0, 400),
+                      handleFilter("filter2", e.target.textContent);
                   }}
                   filterfunc1={() => {
-                    window.scrollTo(0,400),handleFilter("filter1", `${game.platform}`);
+                    window.scrollTo(0, 400),
+                      handleFilter("filter1", `${game.platform}`);
                   }}
                   filterfunc3={() => {
-                    window.scrollTo(0,400),handleFilter("filter1", "PC (Windows)");
+                    window.scrollTo(0, 400),
+                      handleFilter("filter1", "PC (Windows)");
                   }}
                   filterfunc4={() => {
-                    window.scrollTo(0,400),handleFilter("filter1", "Web Browser");
+                    window.scrollTo(0, 400),
+                      handleFilter("filter1", "Web Browser");
                   }}
                 />
               ))}
