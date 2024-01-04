@@ -26,7 +26,7 @@ const AllGames = () => {
   });
   const [selectedSort, setSelectedSort] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
-
+  
   const itemsPerPage = 12;
   const [filterData, setFilterData] = useState([]);
   const [mapData, setMapData] = useState(relevanceGames);
@@ -125,11 +125,13 @@ const AllGames = () => {
 
   const handleNextClick = () => {
     setStartIndex((prevIndex) => prevIndex + itemsPerPage);
-    window.scrollTo(0, 800);
+
+    window.scrollTo(0,550)
   };
   const handlePrevClick = () => {
     setStartIndex((prevIndex) => Math.max(0, prevIndex - itemsPerPage));
-    window.scrollTo(0, 800);
+    window.scrollTo(0,550)
+
   };
 
   const handleFilter = (filterType, value) => {

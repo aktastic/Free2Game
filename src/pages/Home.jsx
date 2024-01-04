@@ -58,7 +58,13 @@ const Home = () => {
 
   useEffect(() => {
     if (top1InPcID) {
-      fetch(`https://www.freetogame.com/api/game?id=${top1InPcID}`)
+      fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${top1InPcID}`,{
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key": "fce86c3313msh5ea77e6a783d6fdp14d107jsn76c2fa395808",
+          "X-RapidAPI-Host": "free-to-play-games-database.p.rapidapi.com",
+        },
+      })
         .then((res) => res.json())
         .then((game) => setTop1GameInPc(game));
     }
@@ -117,8 +123,8 @@ const Home = () => {
                       <img
                         src={
                           popularGamesInPC[0]?.platform === "PC (Windows)"
-                            ? Group
-                            : Vector
+                            ? Vector
+                            : Group
                         }
                       />
                     }
